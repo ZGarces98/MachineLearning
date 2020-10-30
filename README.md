@@ -10,6 +10,6 @@ Proposal: https://docs.google.com/document/d/1ItKPg6fM753xTkjR32hcHIy38MrSZ0uDJs
 GameMakerStudio2: https://www.yoyogames.com/gamemaker
 
 # Contacts
-alexander.yang97@myhunter.cuny.edu (main)
+Alexander Yang: alexander.yang97@myhunter.cuny.edu (main)
 
-zgarces98@gmail.com
+Zachary Garces: zgarces98@gmail.com
