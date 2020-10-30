@@ -4,7 +4,9 @@ For our project, we’re going to use machine learning algorithms to play a twea
 
 # Resources
 Slides: https://docs.google.com/presentation/d/1MkZgazbr3uIv6X89Am66AIcbSMc8RZOKFZqJVTDXpeg/edit?usp=sharing
+
 Proposal: https://docs.google.com/document/d/1ItKPg6fM753xTkjR32hcHIy38MrSZ0uDJsDrrClzCDA/edit
+
 GameMakerStudio2: https://www.yoyogames.com/gamemaker
 
 # Contacts
