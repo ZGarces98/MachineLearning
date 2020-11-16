@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Mode Management",
-    "path": "folders/Scripts/Ultimate Camera/Camera Modes/Mode Management.yy",
+    "path": "folders/Scripts/OtherAddons/Ultimate Camera/Camera Modes/Mode Management.yy",
   },
   "resourceVersion": "1.0",
   "name": "uc_set_mode",

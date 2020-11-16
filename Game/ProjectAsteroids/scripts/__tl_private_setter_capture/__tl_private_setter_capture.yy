@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Setter",
-    "path": "folders/Scripts/tweenline2/Private_DO_NOT_USE_IT/Setter.yy",
+    "path": "folders/Scripts/OtherAddons/tweenline2/Private_DO_NOT_USE_IT/Setter.yy",
   },
   "resourceVersion": "1.0",
   "name": "__tl_private_setter_capture",

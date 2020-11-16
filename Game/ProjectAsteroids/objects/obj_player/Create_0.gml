@@ -1,5 +1,18 @@
 /// @description Controls all of the players settings
 
+#region Keys
+
+key_move  = 0;
+key_left  = 0;
+key_right = 0;
+
+vision_range = 1000;
+vision_xx = 0;
+vision_yy = 0;
+vision[7] = false;
+
+#endregion
+
 #region Settings
 
 turnSpeed    = 400;  // How fast the ship turns
@@ -22,6 +35,12 @@ fric         = 0.05; // How fast the ship slows down
 	#region Deltatime
 	
 	deltatime = 0;
+	
+	#endregion
+	
+	#region Debug
+	
+	debug = true;
 	
 	#endregion
 	

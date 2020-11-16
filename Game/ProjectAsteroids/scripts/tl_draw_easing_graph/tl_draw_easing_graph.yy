@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "drawing",
-    "path": "folders/Scripts/tweenline_debug/drawing.yy",
+    "path": "folders/Scripts/OtherAddons/tweenline_debug/drawing.yy",
   },
   "resourceVersion": "1.0",
   "name": "tl_draw_easing_graph",

@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Control",
-    "path": "folders/Scripts/tweenline2/Animation/Control.yy",
+    "path": "folders/Scripts/OtherAddons/tweenline2/Animation/Control.yy",
   },
   "resourceVersion": "1.0",
   "name": "anim_seek",

@@ -8,7 +8,7 @@ vsp = lengthdir_y(shootspeed * deltatime, image_angle);
 
 #region Collisions
 // Shield
-if(collision_line(x,y,hsp,vsp,obj_shield, false, true)) {
+if(collision_line(x,y,x+hsp,y+vsp,obj_shield, false, true)) {
 	global.gameTimer += 5;
 	x += hsp;
 	y += vsp;
@@ -16,7 +16,7 @@ if(collision_line(x,y,hsp,vsp,obj_shield, false, true)) {
 	return;
 }
 // Player shoot
-else if(collision_line(x,y,hsp,vsp,obj_player_shoot, false, true)) {
+else if(collision_line(x,y,x+hsp,y+vsp,obj_player_shoot, false, true)) {
 	game_restart();
 }
 #endregion

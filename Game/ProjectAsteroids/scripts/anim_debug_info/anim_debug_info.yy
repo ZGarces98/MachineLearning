@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Animation",
-    "path": "folders/Scripts/tweenline2/Animation.yy",
+    "path": "folders/Scripts/OtherAddons/tweenline2/Animation.yy",
   },
   "resourceVersion": "1.0",
   "name": "anim_debug_info",

@@ -3,7 +3,7 @@
   "isCompatibility": false,
   "parent": {
     "name": "Getters",
-    "path": "folders/Scripts/Ultimate Camera/Camera Modes/Mouse Borders/Getters.yy",
+    "path": "folders/Scripts/OtherAddons/Ultimate Camera/Camera Modes/Mouse Borders/Getters.yy",
   },
   "resourceVersion": "1.0",
   "name": "uc_get_mouse_borders_acceleration",
