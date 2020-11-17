@@ -29,7 +29,8 @@ function ml_genSplit(){
 					botType = PLAYERTYPE.shoot;
 					
 					// Bias Node
-					for(var b = 0; b <= hiddenDepth; b++) {
+					var start = choose(0,1);
+					for(var b = start; b <= hiddenDepth; b += 2) {
 						if(random(100) > 5) {
 							bias[b] = bestShoot.mlController.bias[b]; // Bias Number
 						}
@@ -39,8 +40,9 @@ function ml_genSplit(){
 					}
 	
 					// Hidden Layer
+					var start = choose(0,1);
 					for(var d = 0; d < hiddenDepth; d++) {
-						for(var h = 0; h < hiddenHeight; h++) {
+						for(var h = start; h < hiddenHeight; h += 2) {
 							for(var i = 0; i < INPUT.size; i++) {
 								if(random(100) > 5) {
 									hiddenWeight[d][h][i] = bestShoot.mlController.hiddenWeight[d][h][i];
@@ -53,9 +55,10 @@ function ml_genSplit(){
 					}
 	
 					// Output Layer
+					var start = choose(0,1);
 					for(var o = 0; o < OUTPUT.size; o++) { 
 						output[o] = 0;
-						for(var w = 0; w < hiddenHeight; w++) {
+						for(var w = start; w < hiddenHeight; w += 2) {
 							if(random(100) > 5) {
 								outputWeights[o][w] = bestShoot.mlController.outputWeights[o][w];	
 							}
@@ -68,13 +71,16 @@ function ml_genSplit(){
 				}
 			}
 			with(slot[t,PLAYERTYPE.shield]) {
+				
 				image_angle = random_range(0,360);
+				
 				with(mlController) {
 					team = t;
 					botType = PLAYERTYPE.shield;
 					
 					// Bias Node
-					for(var b = 0; b <= hiddenDepth; b++) {
+					var start = choose(0,1);
+					for(var b = start; b <= hiddenDepth; b += 2) {
 						if(random(100) > 5) {
 							bias[b] = bestShield.mlController.bias[b]; // Bias Number
 						}
@@ -84,8 +90,9 @@ function ml_genSplit(){
 					}
 	
 					// Hidden Layer
+					var start = choose(0,1);
 					for(var d = 0; d < hiddenDepth; d++) {
-						for(var h = 0; h < hiddenHeight; h++) {
+						for(var h = start; h < hiddenHeight; h += 2) {
 							for(var i = 0; i < INPUT.size; i++) {
 								if(random(100) > 5) {
 									hiddenWeight[d][h][i] = bestShield.mlController.hiddenWeight[d][h][i];
@@ -98,9 +105,10 @@ function ml_genSplit(){
 					}
 	
 					// Output Layer
+					var start = choose(0,1);
 					for(var o = 0; o < OUTPUT.size; o++) { 
 						output[o] = 0;
-						for(var w = 0; w < hiddenHeight; w++) {
+						for(var w = start; w < hiddenHeight; w += 2) {
 							if(random(100) > 5) {
 								outputWeights[o][w] = bestShield.mlController.outputWeights[o][w];	
 							}
@@ -122,8 +130,10 @@ function ml_genSplit(){
 	// Delete the Asteroids and enemies
 	with(obj_asteroid) instance_destroy();
 	with(obj_enemy) instance_destroy();
+	with(obj_shot_player) instance_destroy();
+	with(obj_shot_enemy) instance_destroy();
 	
 	global.generation++;
-	global.gameTimer = 15;
+	global.gameTimer = 0;
 	
 }

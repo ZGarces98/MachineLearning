@@ -7,7 +7,6 @@ enum PLAYERTYPE {
 
 #region Settings
 
-global.totalTeams = 3; // How many pairs of bots on screen
 posOffset = 80;
 
 #endregion

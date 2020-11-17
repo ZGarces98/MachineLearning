@@ -1,4 +1,4 @@
 /// @description Settings
 
-global.gameTimer = 15;   // How much time the players have
-timer = 0; // Used to reduce the time every second
+global.gameTimer = 0;   // Game timer
+timer = 1; // Used to reduce the time every second

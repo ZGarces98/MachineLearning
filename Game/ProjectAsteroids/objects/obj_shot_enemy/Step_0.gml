@@ -13,7 +13,6 @@ var player_shoot = collision_line(x,y,x+hsp,y+vsp,obj_player_shoot, false, true)
 
 // Shield
 if(shield) {
-	global.gameTimer += 5;
 	x += hsp;
 	y += vsp;
 	instance_destroy();
