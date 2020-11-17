@@ -35,13 +35,7 @@ fric         = 0.05; // How fast the ship slows down
 	deltatime = 0;
 	
 	#endregion
-	
-	#region Debug
-	
-	debug = true;
-	
-	#endregion
-	
+		
 #endregion
 
 #region Machine Learning

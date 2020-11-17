@@ -7,7 +7,7 @@ enum PLAYERTYPE {
 
 #region Settings
 
-global.totalTeams = 1; // How many pairs of bots on screen
+global.totalTeams = 3; // How many pairs of bots on screen
 posOffset = 80;
 
 #endregion
@@ -15,25 +15,25 @@ posOffset = 80;
 #region Slots
 
 // Initialize Array
-for(var r = 0; r < global.totalTeams; r++) {
+for(var t = 0; t < global.totalTeams; t++) {
 	
 	// Spawn bots
 	var randOffset = random_range(-posOffset,posOffset);
-	slot[r,PLAYERTYPE.shoot] = instance_create_layer(room_width/2+randOffset,room_height/2+randOffset, "Players", obj_player_shoot);	
-	slot[r,PLAYERTYPE.shield] = instance_create_layer(room_width/2+randOffset,room_height/2+randOffset, "Players", obj_player_shield);
+	slot[t,PLAYERTYPE.shoot]  = instance_create_layer(room_width/2+randOffset,room_height/2+randOffset, "Players", obj_player_shoot);	
+	slot[t,PLAYERTYPE.shield] = instance_create_layer(room_width/2+randOffset,room_height/2+randOffset, "Players", obj_player_shield);
 	
 	// Set teams and ml controller
-	with(slot[r,PLAYERTYPE.shoot]) {
+	with(slot[t,PLAYERTYPE.shoot]) {
 		image_angle = random_range(0,360);
 		with(mlController) {
-			team = r;
+			team = t;
 			botType = PLAYERTYPE.shoot;
 		}
 	}
-	with(slot[r,PLAYERTYPE.shield]) {
+	with(slot[t,PLAYERTYPE.shield]) {
 		image_angle = random_range(0,360);
 		with(mlController) {
-			team = r;
+			team = t;
 			botType = PLAYERTYPE.shield;
 		}
 	}

@@ -11,7 +11,7 @@ if(global.gameTimer >= 0) {
 	}
 }
 
-if(global.gameTimer < 0) game_restart();
+if(global.gameTimer < 0) ml_genSplit();
 
 // Clamp
 global.gameTimer = clamp(global.gameTimer, -1, 99);
