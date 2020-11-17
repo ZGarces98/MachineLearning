@@ -30,10 +30,10 @@ enum OUTPUT {
 
 #region Settings
 
-hiddenDepth  = 3; // How many hidden layers there should be
+hiddenDepth  = 5; // How many hidden layers there should be
 hiddenHeight = 9; // Height of hidden layers
-weightRange  = 2/INPUT.size; // Range for the weights
-biasRange    = 2/INPUT.size; // Range of the bias
+weightRange  = 1; // Range for the weights
+biasRange    = 5; // Range of the bias
 
 #endregion
 
