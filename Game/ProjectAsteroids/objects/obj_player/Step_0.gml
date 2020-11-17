@@ -27,7 +27,11 @@ y += vsp;
 
 // Collision
 if(place_meeting(x,y,obj_asteroid)) {
-	game_restart();
+	with(obj_inputController) {
+		var team = other.mlController.team;
+		instance_destroy(slot[team,PLAYERTYPE.shoot]);
+		instance_destroy(slot[team,PLAYERTYPE.shield]);
+	}
 }
 
 #region Room Wrap
@@ -57,29 +61,5 @@ vel_x = deltalerp(vel_x, 0, fric, deltatime * 60);
 vel_y = deltalerp(vel_y, 0, fric, deltatime * 60);
 
 #endregion
-
-#region Vision
-
-// Loop through every angle
-for(var i = 0; i < 360; i++) {
-	
-	vision[i] = false;
-	
-	vision_xx = lengthdir_x(vision_range, (i*45)+image_angle);
-	vision_yy = lengthdir_y(vision_range,(i*45)+image_angle);
-		
-	var touchAsteroid = collision_line(x,y,x+vision_xx,y+vision_yy,obj_asteroid,false,true);
-	var touchEnemy    = collision_line(x,y,x+vision_xx,y+vision_yy,obj_enemy,false,true);
-	var touchBullet   = collision_line(x,y,x+vision_xx,y+vision_yy,obj_shot_enemy,false,true);
-		
-	if(touchAsteroid or touchEnemy or touchBullet) {
-		vision[i] = true; // Save the value in an array
-		break;
-	}
-
-}
-
-#endregion
-
 
 

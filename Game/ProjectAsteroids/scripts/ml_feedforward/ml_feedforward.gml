@@ -1,8 +1,8 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function ml_feedforward(){
-
-	with(obj_mlcontroller) {
+	
+	with(mlController) {
 		
 		// Input Layer
 		for(var i = 0; i < INPUT.size; i++) {
@@ -18,7 +18,7 @@ function ml_feedforward(){
 		    }
         
 		    //Activation function
-		    hidden[i] = sigmoid(hidden[i]);
+		    hidden[i] = leakyReLU(hidden[i]);
 		}
 
 		//Output Nodes   

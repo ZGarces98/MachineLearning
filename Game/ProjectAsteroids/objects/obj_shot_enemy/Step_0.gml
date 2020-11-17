@@ -7,8 +7,12 @@ hsp = lengthdir_x(shootspeed * deltatime, image_angle);
 vsp = lengthdir_y(shootspeed * deltatime, image_angle);
 
 #region Collisions
+
+var shield = collision_line(x,y,x+hsp,y+vsp,obj_shield, false, true);
+var player_shoot = collision_line(x,y,x+hsp,y+vsp,obj_player_shoot, false, true);
+
 // Shield
-if(collision_line(x,y,x+hsp,y+vsp,obj_shield, false, true)) {
+if(shield) {
 	global.gameTimer += 5;
 	x += hsp;
 	y += vsp;
@@ -16,8 +20,12 @@ if(collision_line(x,y,x+hsp,y+vsp,obj_shield, false, true)) {
 	return;
 }
 // Player shoot
-else if(collision_line(x,y,x+hsp,y+vsp,obj_player_shoot, false, true)) {
-	game_restart();
+else if(player_shoot) {
+	with(obj_inputController) {
+		var team = player_shoot.mlController.team;
+		instance_destroy(slot[team,PLAYERTYPE.shoot]);
+		instance_destroy(slot[team,PLAYERTYPE.shield]);
+	}
 }
 #endregion
 

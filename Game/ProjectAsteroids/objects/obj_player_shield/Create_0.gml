@@ -4,7 +4,7 @@
 event_inherited();
 
 // Create a shield that follows the player
-with(instance_create_layer(x,y,"Players",obj_shield)) {
-	follow = other.id;	
-}
+shieldID = instance_create_layer(x,y,"Players",obj_shield);
+with(shieldID) follow = other.id;	
+
 

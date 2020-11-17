@@ -7,8 +7,6 @@ key_left  = 0;
 key_right = 0;
 
 vision_range = 1000;
-vision_xx = 0;
-vision_yy = 0;
 vision[7] = false;
 
 #endregion
@@ -44,4 +42,10 @@ fric         = 0.05; // How fast the ship slows down
 	
 	#endregion
 	
+#endregion
+
+#region Machine Learning
+
+mlController = instance_create_depth(0,0,0,obj_mlcontroller);
+
 #endregion
