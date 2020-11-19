@@ -30,10 +30,10 @@ enum OUTPUT {
 
 #region Settings
 
-hiddenDepth  = 5; // How many hidden layers there should be
+hiddenDepth  = 1; // How many hidden layers there should be
 hiddenHeight = 9; // Height of hidden layers
 weightRange  = 1; // Range for the weights
-biasRange    = 5; // Range of the bias
+biasRange    = 1; // Range of the bias
 
 #endregion
 
@@ -47,7 +47,7 @@ biasRange    = 5; // Range of the bias
 	
 	// Bias Node
 	for(var b = 0; b <= hiddenDepth; b++) {
-		bias[b] = random_range(-biasRange, biasRange); // Bias Number
+		bias[b] = 1; // Bias Number
 	}
 	
 	// Hidden Layer

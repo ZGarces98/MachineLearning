@@ -21,6 +21,8 @@ for(var i = 0; i < 360; i++) {
 		var touchBullet = collision_line(x,y,x+vision_xx,y+vision_yy,obj_shot_enemy,false,true);
 		if(touchBullet) vision[i] = 2;
 	}
+	
+	vision[i] /= 2;
 }
 
 #endregion

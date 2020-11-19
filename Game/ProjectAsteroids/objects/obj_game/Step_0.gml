@@ -5,7 +5,7 @@ var teamCount = instance_number(obj_player) / 2;
 global.currentTeams = teamCount;
 
 if(global.totalTeams > 2) {
-	if(teamCount == 2) {
+	if(teamCount <= 2) {
 		ml_genSplit();		
 	}
 }

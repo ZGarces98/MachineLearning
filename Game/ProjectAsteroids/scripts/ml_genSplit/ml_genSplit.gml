@@ -3,10 +3,19 @@
 function ml_genSplit(){
 	
 	// Choose the index number
-	var parentShoot1 = instance_find(obj_player_shoot,0);
-	var parentShoot2 = instance_find(obj_player_shoot,1);
-	var parentShield1 = instance_find(obj_player_shield,0);
-	var parentShield2 = instance_find(obj_player_shield,1);
+	if(global.totalTeams > 2) {
+		var parentShoot1 = instance_find(obj_player_shoot,0);
+		var parentShoot2 = instance_find(obj_player_shoot,1);
+		var parentShield1 = instance_find(obj_player_shield,0);
+		var parentShield2 = instance_find(obj_player_shield,1);
+	}
+	else {
+		var parentShoot1 = instance_find(obj_player_shoot,0);
+		var parentShoot2 = instance_find(obj_player_shoot,0);
+		var parentShield1 = instance_find(obj_player_shield,0);
+		var parentShield2 = instance_find(obj_player_shield,0);
+	}
+	
 	
 	var mutationRate = 1;
 	
@@ -23,6 +32,7 @@ function ml_genSplit(){
 			with(slot[t,PLAYERTYPE.shoot]) {
 				image_angle = random_range(0,360);
 				with(mlController) {
+					
 					team = t;
 					botType = PLAYERTYPE.shoot;
 					

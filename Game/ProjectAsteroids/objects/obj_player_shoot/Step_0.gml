@@ -44,6 +44,8 @@ for(var i = 0; i < 360; i++) {
 			if(touchEnemy) vision[i] = 1;
 		}		
 	}
+	
+	vision[i] /= 3;
 
 }
 
