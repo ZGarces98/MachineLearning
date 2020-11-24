@@ -28,15 +28,6 @@ enum OUTPUT {
 }
 #endregion
 
-#region Settings
-
-hiddenDepth  = 3; // How many hidden layers there should be
-hiddenHeight = 4; // Height of hidden layers
-weightRange  = 3; // Range for the weights
-biasRange    = 3; // Range of the bias
-
-#endregion
-
 #region Machine Learning
 
 	#region NN
@@ -46,24 +37,24 @@ biasRange    = 3; // Range of the bias
 	}
 	
 	// Bias Node
-	for(var b = 0; b <= hiddenDepth; b++) {
-		bias[b] = random_range(-biasRange,biasRange); // Bias Number
+	for(var b = 0; b <= global.hiddenDepth; b++) {
+		bias[b] = random_range(-global.biasRange,global.biasRange); // Bias Number
 	}
 	
 	// Hidden layer (INPUT)
-	for(var h = 0; h < hiddenHeight; h++) {
+	for(var h = 0; h < global.hiddenHeight; h++) {
 		hidden[0][h] = 0;
 		for(var i = 0; i < INPUT.size; i++) {
-			hiddenWeight[0][h][i] = random_range(-weightRange, weightRange);
+			hiddenWeight[0][h][i] = random_range(-global.weightRange, global.weightRange);
 		}
 	}
 	
 	// Hidden layer (EXTRA)
-	for(var d = 1; d < hiddenDepth; d++) {
-		for(var h = 0; h < hiddenHeight; h++) {
+	for(var d = 1; d < global.hiddenDepth; d++) {
+		for(var h = 0; h < global.hiddenHeight; h++) {
 			hidden[d][h] = 0;
-			for(var i = 0; i < hiddenHeight; i++) {
-				hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);
+			for(var i = 0; i < global.hiddenHeight; i++) {
+				hiddenWeight[d][h][i] = random_range(-global.weightRange, global.weightRange);
 			}
 		}	
 	}
@@ -71,8 +62,8 @@ biasRange    = 3; // Range of the bias
 	// Output Layer
 	for(var o = 0; o < OUTPUT.size; o++) { 
 		output[o] = 0;
-		for(var w = 0; w < hiddenHeight; w++) {
-			outputWeights[o, w] = random_range(-weightRange, weightRange);	
+		for(var w = 0; w < global.hiddenHeight; w++) {
+			outputWeights[o, w] = random_range(-global.weightRange, global.weightRange);	
 		}
 	}
 	

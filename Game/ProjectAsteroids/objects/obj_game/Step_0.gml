@@ -25,3 +25,13 @@ if(global.gameTimer >= global.bestTime) {
 }
 
 #endregion
+
+#region Debug Keys
+
+if(keyboard_check_pressed(keybindLine)) 
+	global.debugLines = !global.debugLines;	
+
+if(keyboard_check_pressed(keybindScore)) 
+	global.debugScore = !global.debugScore;	
+
+#endregion

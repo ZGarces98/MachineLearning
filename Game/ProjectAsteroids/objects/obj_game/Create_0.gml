@@ -2,15 +2,45 @@
 
 /*
 
-Used to keep track of the current teams
+Used to change the game settings of everything.
+Used to change the neural network of everything else.
 
 */
 
-global.totalTeams = 10; // How many pairs of bots on screen
+#region Settings
 
+	global.totalTeams = 10; // How many pairs of bots on screen
+
+	#region Debug Keys
+	
+	keybindLine  = ord("Z");
+	keybindScore = ord("X");
+	
+	#endregion
+
+	#region Machine Learning
+	
+	global.hiddenDepth  = 1; // How many hidden layers there should be
+	global.hiddenHeight = 5; // Height of hidden layers
+	global.weightRange  = 50; // Range for the weights
+	global.biasRange    = 1; // Range of the bias
+	
+	#endregion
+
+#endregion
+
+#region Essentials
+
+// Needed
 global.currentTeams = 0; // How many teams are alive 
 global.generation = 1; // What generation is this
-global.debug = false; // Show the lines
 
+// Best
 global.bestTime = 0;
 global.bestGeneration = 1;
+
+// Debug
+global.debugLines = false; // Show the lines
+global.debugScore = false; // Show the scoring of each
+
+#endregion

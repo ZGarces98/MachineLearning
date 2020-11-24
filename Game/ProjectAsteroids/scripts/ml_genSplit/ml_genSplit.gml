@@ -127,39 +127,39 @@ function ml_genSplit(){
 					botType = PLAYERTYPE.shoot;
 					
 					// Bias Node
-					for(var b = 0; b <= hiddenDepth; b++) {
+					for(var b = 0; b <= global.hiddenDepth; b++) {
 						if(random(100) > mutationRate) {
 							var parent = choose(parentShoot1, parentShoot2);
 							bias[b] = parent.mlController.bias[b]; 
 						}
 						else {
-							bias[b] = random_range(-biasRange,biasRange); // Bias Number
+							bias[b] = random_range(-global.biasRange,global.biasRange); // Bias Number
 						}
 					}
 	
 					// Hidden layer (INPUT)
-					for(var h = 0; h < hiddenHeight; h++) {
+					for(var h = 0; h < global.hiddenHeight; h++) {
 						for(var i = 0; i < INPUT.size; i++) {
 							if(random(100) > mutationRate) {
 								var parent = choose(parentShoot1, parentShoot2);
 								hiddenWeight[0][h][i] = parent.mlController.hiddenWeight[0][h][i];
 							}
 							else {
-								hiddenWeight[0][h][i] = random_range(-weightRange, weightRange);
+								hiddenWeight[0][h][i] = random_range(-global.weightRange, global.weightRange);
 							}
 						}
 					}
 	
 					// Hidden layer (EXTRA)
-					for(var d = 1; d < hiddenDepth; d++) {
-						for(var h = 0; h < hiddenHeight; h++) {
-							for(var i = 0; i < hiddenHeight; i++) {
+					for(var d = 1; d < global.hiddenDepth; d++) {
+						for(var h = 0; h < global.hiddenHeight; h++) {
+							for(var i = 0; i < global.hiddenHeight; i++) {
 								if(random(100) > mutationRate) {
 									var parent = choose(parentShoot1, parentShoot2);
 									hiddenWeight[d][h][i] = parent.mlController.hiddenWeight[d][h][i];
 								}
 								else {
-									hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);	
+									hiddenWeight[d][h][i] = random_range(-global.weightRange, global.weightRange);	
 								}
 							}
 						}	
@@ -168,13 +168,13 @@ function ml_genSplit(){
 					// Output Layer
 					for(var o = 0; o < OUTPUT.size; o++) { 
 						output[o] = 0;
-						for(var w = 0; w < hiddenHeight; w++) {
+						for(var w = 0; w < global.hiddenHeight; w++) {
 							if(random(100) > mutationRate) {
 								var parent = choose(parentShoot1, parentShoot2);
 								outputWeights[o][w] = parent.mlController.outputWeights[o][w];
 							}
 							else {
-								outputWeights[o][w] = random_range(-weightRange, weightRange);		
+								outputWeights[o][w] = random_range(-global.weightRange, global.weightRange);		
 							}
 						}
 					}
@@ -194,39 +194,39 @@ function ml_genSplit(){
 					// BIAS
 					
 					// Bias Node
-					for(var b = 0; b <= hiddenDepth; b++) {
+					for(var b = 0; b <= global.hiddenDepth; b++) {
 						if(random(100) > mutationRate) {
 							var parent = choose(parentShield1, parentShield2);
 							bias[b] = parent.mlController.bias[b]; 
 						}
 						else {
-							bias[b] = random_range(-biasRange,biasRange); // Bias Number
+							bias[b] = random_range(-global.biasRange,global.biasRange); // Bias Number
 						}
 					}
 	
 					// Hidden layer (INPUT)
-					for(var h = 0; h < hiddenHeight; h++) {
+					for(var h = 0; h < global.hiddenHeight; h++) {
 						for(var i = 0; i < INPUT.size; i++) {
 							if(random(100) > mutationRate) {
 								var parent = choose(parentShield1, parentShield2);
 								hiddenWeight[0][h][i] = parent.mlController.hiddenWeight[0][h][i];
 							}
 							else {
-								hiddenWeight[0][h][i] = random_range(-weightRange, weightRange);
+								hiddenWeight[0][h][i] = random_range(-global.weightRange, global.weightRange);
 							}
 						}
 					}
 	
 					// Hidden layer (EXTRA)
-					for(var d = 1; d < hiddenDepth; d++) {
-						for(var h = 0; h < hiddenHeight; h++) {
-							for(var i = 0; i < hiddenHeight; i++) {
+					for(var d = 1; d < global.hiddenDepth; d++) {
+						for(var h = 0; h < global.hiddenHeight; h++) {
+							for(var i = 0; i < global.hiddenHeight; i++) {
 								if(random(100) > mutationRate) {
 									var parent = choose(parentShield1, parentShield2);
 									hiddenWeight[d][h][i] = parent.mlController.hiddenWeight[d][h][i];
 								}
 								else {
-									hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);	
+									hiddenWeight[d][h][i] = random_range(-global.weightRange, global.weightRange);	
 								}
 							}
 						}	
@@ -235,13 +235,13 @@ function ml_genSplit(){
 					// Output Layer
 					for(var o = 0; o < OUTPUT.size; o++) { 
 						output[o] = 0;
-						for(var w = 0; w < hiddenHeight; w++) {
+						for(var w = 0; w < global.hiddenHeight; w++) {
 							if(random(100) > mutationRate) {
 								var parent = choose(parentShield1, parentShield2);
 								outputWeights[o][w] = parent.mlController.outputWeights[o][w];
 							}
 							else {
-								outputWeights[o][w] = random_range(-weightRange, weightRange);		
+								outputWeights[o][w] = random_range(-global.weightRange, global.weightRange);		
 							}
 						}
 					}
