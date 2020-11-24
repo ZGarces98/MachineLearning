@@ -15,6 +15,7 @@ var player_shoot = collision_line(x,y,x+hsp,y+vsp,obj_player_shoot, false, true)
 if(shield) {
 	x += hsp;
 	y += vsp;
+	with(shield) follow.mlPoints += 10;
 	instance_destroy();
 	return;
 }

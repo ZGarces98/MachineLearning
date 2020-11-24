@@ -12,6 +12,7 @@ if(timer >= shootTimer) {
 	var yy = lengthdir_y(50, image_angle);
 	var projectile = instance_create_layer(x + xx, y + yy, "Players", obj_shot_player);
 	with(projectile) {
+		follow = other.id;
 		image_angle = other.image_angle;
 	}
 }

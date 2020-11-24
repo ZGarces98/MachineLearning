@@ -39,3 +39,13 @@ if(instance_exists(mlController)) {
 			   vision[4],vision[5],vision[6],vision[7]);
 }
 #endregion
+
+if(pointTimer >= pointRate) {
+	if(key_move == 1) {
+		pointTimer = 0;
+		mlPoints++;
+	}
+}
+else {
+	pointTimer += deltatime;	
+}

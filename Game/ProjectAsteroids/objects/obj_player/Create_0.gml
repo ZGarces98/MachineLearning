@@ -41,5 +41,6 @@ fric         = 0.05; // How fast the ship slows down
 #region Machine Learning
 
 mlController = instance_create_depth(0,0,0,obj_mlcontroller);
+mlPoints = 0;
 
 #endregion

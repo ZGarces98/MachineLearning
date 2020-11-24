@@ -7,4 +7,6 @@ event_inherited();
 shieldID = instance_create_layer(x,y,"Players",obj_shield);
 with(shieldID) follow = other.id;	
 
+pointTimer = 0;
+pointRate = 1;
 

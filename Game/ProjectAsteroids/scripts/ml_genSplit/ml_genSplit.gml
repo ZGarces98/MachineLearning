@@ -1,22 +1,110 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
+/// @description Used to select and spawn children
+
+
 function ml_genSplit(){
 	
-	// Choose the index number
-	if(global.totalTeams > 2) {
-		var parentShoot1 = instance_find(obj_player_shoot,0);
-		var parentShoot2 = instance_find(obj_player_shoot,1);
-		var parentShield1 = instance_find(obj_player_shield,0);
-		var parentShield2 = instance_find(obj_player_shield,1);
-	}
-	else {
-		var parentShoot1 = instance_find(obj_player_shoot,0);
-		var parentShoot2 = instance_find(obj_player_shoot,0);
-		var parentShield1 = instance_find(obj_player_shield,0);
-		var parentShield2 = instance_find(obj_player_shield,0);
+#region Fitness and Selection
+	
+	#region Shoot
+	
+	var parentShoot1 = noone;
+	var parentShoot2 = noone;
+	
+	// Total Shoot Points
+	var totalPointsShoot = 0;
+	var totalShoot = instance_number(obj_player_shoot);
+	for(var i = 0; i < totalShoot; i++) {
+		with(instance_find(obj_player_shoot, i)) {
+			totalPointsShoot += mlPoints;	
+		}
 	}
 	
+	// Parent Picker 
+	var shootSelected = 0;
+	for(var i = 0; i < totalShoot; i++) {
+		if(shootSelected < 2) {
+			var chance     = random_range(0, 1);
+			var shootShip  = instance_find(obj_player_shoot, i);
+			var shipChance = shootShip.mlPoints / totalPointsShoot;
+			if(chance < shipChance) {
+				if(shootSelected == 0) {
+					parentShoot1 = shootShip;
+					shootSelected++;
+				}
+				else {
+					parentShoot2 = shootShip;
+					shootSelected++;
+				}
+			}
+		}
+		else {
+			break;	
+		}
+	}
 	
+	// FailSafe
+	if(parentShoot1 == noone) 
+		parentShoot1 = instance_find(obj_player_shoot, irandom_range(0, instance_number(obj_player_shoot)-1));
+	if(parentShoot2 == noone) 
+		parentShoot2 = instance_find(obj_player_shoot, irandom_range(0, instance_number(obj_player_shoot)-1));
+	
+	#endregion
+	
+	#region Shield
+	
+	var parentShield1 = noone;
+	var parentShield2 = noone;
+	
+	// Total Shield Points
+	var totalPointsShield = 0;
+	var totalShield = instance_number(obj_player_shield);
+	for(var i = 0; i < totalShield; i++) {
+		with(instance_find(obj_player_shield, i)) {
+			totalPointsShield += mlPoints;	
+		}
+	}
+	
+	// Parent Picker 
+	var shieldSelected = 0;
+	for(var i = 0; i < totalShield; i++) {
+		if(shieldSelected < 2) {
+			var chance     = random_range(0, 1);
+			var shieldShip  = instance_find(obj_player_shield, i);
+			var shipChance = shieldShip.mlPoints / totalPointsShield;
+			if(chance < shipChance) {
+				if(shieldSelected == 0) {
+					parentShield1 = shieldShip;
+					shieldSelected++;
+				}
+				else {
+					parentShield2 = shieldShip;
+					shieldSelected++;
+				}
+			}
+		}
+		else {
+			break;	
+		}
+	}
+	
+	// FailSafe
+	if(parentShield1 == noone) 
+		parentShield1 = instance_find(obj_player_shield, irandom_range(0, instance_number(obj_player_shield)-1));
+	if(parentShield2 == noone) 
+		parentShield2 = instance_find(obj_player_shield, irandom_range(0, instance_number(obj_player_shield)-1));
+		
+	// Remove Everything else
+	with(obj_player) {
+		if(id != parentShoot1 or id != parentShoot2 or id != parentShield1 or id != parentShield2) 
+			instance_destroy();	
+	}
+		
+	#endregion
+	
+#endregion
+
+#region Crossover
+
 	var mutationRate = 1;
 	
 	// Spawn the Children
@@ -29,6 +117,8 @@ function ml_genSplit(){
 			slot[t,PLAYERTYPE.shield] = instance_create_layer(room_width/2+randOffset,room_height/2+randOffset, "Players", obj_player_shield);
 	
 			// Set teams and ml controller
+			
+			// Shoot Crossover
 			with(slot[t,PLAYERTYPE.shoot]) {
 				image_angle = random_range(0,360);
 				with(mlController) {
@@ -36,95 +126,63 @@ function ml_genSplit(){
 					team = t;
 					botType = PLAYERTYPE.shoot;
 					
-					// BIAS
-					
-					//Parent 1
-					var start = choose(0,1);
-					for(var b = start; b <= hiddenDepth; b += 2) {
+					// Bias Node
+					for(var b = 0; b <= hiddenDepth; b++) {
 						if(random(100) > mutationRate) {
-							bias[b] = parentShoot1.mlController.bias[b]; // Bias Number
+							var parent = choose(parentShoot1, parentShoot2);
+							bias[b] = parent.mlController.bias[b]; 
 						}
 						else {
-							bias[b] = random_range(-biasRange, biasRange); // Bias Number
+							bias[b] = random_range(-biasRange,biasRange); // Bias Number
 						}
 					}
-					
-					// Parent 2
-					start = start == 1 ? 0 : 1;
-					for(var b = start; b <= hiddenDepth; b += 2) {
-						if(random(100) > mutationRate) {
-							bias[b] = parentShoot2.mlController.bias[b]; // Bias Number
-						}
-						else {
-							bias[b] = random_range(-biasRange, biasRange); // Bias Number
-						}
-					}
-					
 	
-					// HIDDEN
-					
-					// parent 2
-					var start = choose(0,1);
-					for(var d = 0; d < hiddenDepth; d++) {
-						for(var h = start; h < hiddenHeight; h += 2) {
-							for(var i = 0; i < INPUT.size; i++) {
-								if(random(100) > 5) {
-									hiddenWeight[d][h][i] = parentShoot1.mlController.hiddenWeight[d][h][i];
-								}
-								else {
-									hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);
-								}
+					// Hidden layer (INPUT)
+					for(var h = 0; h < hiddenHeight; h++) {
+						for(var i = 0; i < INPUT.size; i++) {
+							if(random(100) > mutationRate) {
+								var parent = choose(parentShoot1, parentShoot2);
+								hiddenWeight[0][h][i] = parent.mlController.hiddenWeight[0][h][i];
 							}
-						}
-					}
-					
-					// Parent 2
-					start = start == 1 ? 0 : 1;
-					for(var d = 0; d < hiddenDepth; d++) {
-						for(var h = start; h < hiddenHeight; h += 2) {
-							for(var i = 0; i < INPUT.size; i++) {
-								if(random(100) > 5) {
-									hiddenWeight[d][h][i] = parentShoot2.mlController.hiddenWeight[d][h][i];
-								}
-								else {
-									hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);
-								}
+							else {
+								hiddenWeight[0][h][i] = random_range(-weightRange, weightRange);
 							}
 						}
 					}
 	
-					// OUTPUT
-					
-					// Parent 1
-					var start = choose(0,1);
-					for(var o = 0; o < OUTPUT.size; o++) { 
-						output[o] = 0;
-						for(var w = start; w < hiddenHeight; w += 2) {
-							if(random(100) > 5) {
-								outputWeights[o][w] = parentShoot1.mlController.outputWeights[o][w];	
+					// Hidden layer (EXTRA)
+					for(var d = 1; d < hiddenDepth; d++) {
+						for(var h = 0; h < hiddenHeight; h++) {
+							for(var i = 0; i < hiddenHeight; i++) {
+								if(random(100) > mutationRate) {
+									var parent = choose(parentShoot1, parentShoot2);
+									hiddenWeight[d][h][i] = parent.mlController.hiddenWeight[d][h][i];
+								}
+								else {
+									hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);	
+								}
 							}
-							else {
-								outputWeights[o][w] = random_range(-weightRange, weightRange);	
-							}
-						}
+						}	
 					}
-					
-					// Parent 2
-					start = start == 1 ? 0 : 1;
+	
+					// Output Layer
 					for(var o = 0; o < OUTPUT.size; o++) { 
 						output[o] = 0;
-						for(var w = start; w < hiddenHeight; w += 2) {
-							if(random(100) > 5) {
-								outputWeights[o][w] = parentShoot2.mlController.outputWeights[o][w];	
+						for(var w = 0; w < hiddenHeight; w++) {
+							if(random(100) > mutationRate) {
+								var parent = choose(parentShoot1, parentShoot2);
+								outputWeights[o][w] = parent.mlController.outputWeights[o][w];
 							}
 							else {
-								outputWeights[o][w] = random_range(-weightRange, weightRange);	
+								outputWeights[o][w] = random_range(-weightRange, weightRange);		
 							}
 						}
 					}
 					
 				}
 			}
+			
+			// Shield Crossover 
 			with(slot[t,PLAYERTYPE.shield]) {
 				
 				image_angle = random_range(0,360);
@@ -135,87 +193,55 @@ function ml_genSplit(){
 					
 					// BIAS
 					
-					//Parent 1
-					var start = choose(0,1);
-					for(var b = start; b <= hiddenDepth; b += 2) {
+					// Bias Node
+					for(var b = 0; b <= hiddenDepth; b++) {
 						if(random(100) > mutationRate) {
-							bias[b] = parentShield1.mlController.bias[b]; // Bias Number
+							var parent = choose(parentShield1, parentShield2);
+							bias[b] = parent.mlController.bias[b]; 
 						}
 						else {
-							bias[b] = random_range(-biasRange, biasRange); // Bias Number
+							bias[b] = random_range(-biasRange,biasRange); // Bias Number
 						}
 					}
-					
-					// Parent 2
-					start = start == 1 ? 0 : 1;
-					for(var b = start; b <= hiddenDepth; b += 2) {
-						if(random(100) > mutationRate) {
-							bias[b] = parentShield2.mlController.bias[b]; // Bias Number
-						}
-						else {
-							bias[b] = random_range(-biasRange, biasRange); // Bias Number
-						}
-					}
-					
 	
-					// HIDDEN
-					
-					// parent 2
-					var start = choose(0,1);
-					for(var d = 0; d < hiddenDepth; d++) {
-						for(var h = start; h < hiddenHeight; h += 2) {
-							for(var i = 0; i < INPUT.size; i++) {
-								if(random(100) > 5) {
-									hiddenWeight[d][h][i] = parentShield1.mlController.hiddenWeight[d][h][i];
-								}
-								else {
-									hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);
-								}
+					// Hidden layer (INPUT)
+					for(var h = 0; h < hiddenHeight; h++) {
+						for(var i = 0; i < INPUT.size; i++) {
+							if(random(100) > mutationRate) {
+								var parent = choose(parentShield1, parentShield2);
+								hiddenWeight[0][h][i] = parent.mlController.hiddenWeight[0][h][i];
 							}
-						}
-					}
-					
-					// Parent 2
-					start = start == 1 ? 0 : 1;
-					for(var d = 0; d < hiddenDepth; d++) {
-						for(var h = start; h < hiddenHeight; h += 2) {
-							for(var i = 0; i < INPUT.size; i++) {
-								if(random(100) > 5) {
-									hiddenWeight[d][h][i] = parentShield2.mlController.hiddenWeight[d][h][i];
-								}
-								else {
-									hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);
-								}
+							else {
+								hiddenWeight[0][h][i] = random_range(-weightRange, weightRange);
 							}
 						}
 					}
 	
-					// OUTPUT
-					
-					// Parent 1
-					var start = choose(0,1);
-					for(var o = 0; o < OUTPUT.size; o++) { 
-						output[o] = 0;
-						for(var w = start; w < hiddenHeight; w += 2) {
-							if(random(100) > 5) {
-								outputWeights[o][w] = parentShield1.mlController.outputWeights[o][w];	
+					// Hidden layer (EXTRA)
+					for(var d = 1; d < hiddenDepth; d++) {
+						for(var h = 0; h < hiddenHeight; h++) {
+							for(var i = 0; i < hiddenHeight; i++) {
+								if(random(100) > mutationRate) {
+									var parent = choose(parentShield1, parentShield2);
+									hiddenWeight[d][h][i] = parent.mlController.hiddenWeight[d][h][i];
+								}
+								else {
+									hiddenWeight[d][h][i] = random_range(-weightRange, weightRange);	
+								}
 							}
-							else {
-								outputWeights[o][w] = random_range(-weightRange, weightRange);	
-							}
-						}
+						}	
 					}
-					
-					// Parent 2
-					start = start == 1 ? 0 : 1;
+	
+					// Output Layer
 					for(var o = 0; o < OUTPUT.size; o++) { 
 						output[o] = 0;
-						for(var w = start; w < hiddenHeight; w += 2) {
-							if(random(100) > 5) {
-								outputWeights[o][w] = parentShield2.mlController.outputWeights[o][w];	
+						for(var w = 0; w < hiddenHeight; w++) {
+							if(random(100) > mutationRate) {
+								var parent = choose(parentShield1, parentShield2);
+								outputWeights[o][w] = parent.mlController.outputWeights[o][w];
 							}
 							else {
-								outputWeights[o][w] = random_range(-weightRange, weightRange);	
+								outputWeights[o][w] = random_range(-weightRange, weightRange);		
 							}
 						}
 					}
@@ -225,6 +251,10 @@ function ml_genSplit(){
 		}
 	}
 	
+#endregion
+	
+#region Cleanup
+
 	// Delete the best
 	with(parentShoot1) instance_destroy();
 	with(parentShoot2) instance_destroy();
@@ -237,7 +267,10 @@ function ml_genSplit(){
 	with(obj_shot_player) instance_destroy();
 	with(obj_shot_enemy) instance_destroy();
 	
+	// Add next generation and reset timer
 	global.generation++;
 	global.gameTimer = 0;
+	
+#endregion
 	
 }
