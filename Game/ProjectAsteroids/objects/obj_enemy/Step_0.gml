@@ -3,11 +3,12 @@
 #region Keybinds
 
 if(instance_exists(obj_player_shoot)) {
-	var move = 1
-	
-	var xx = obj_player_shoot.x;
-	var yy = obj_player_shoot.y;
-	var turn = sign(-angle_difference(image_angle, point_direction(x,y,xx,yy)));
+	with(obj_player_shoot) {
+		if(!lost) {
+			var move = 1
+			var turn = sign(-angle_difference(image_angle, point_direction(other.x,other.y,x,y)));
+		}
+	}
 }
 else {
 	var move = 0;

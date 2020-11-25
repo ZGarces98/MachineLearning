@@ -20,10 +20,10 @@ Used to change the neural network of everything else.
 
 	#region Machine Learning
 	
-	global.hiddenDepth  = 1; // How many hidden layers there should be
-	global.hiddenHeight = 5; // Height of hidden layers
-	global.weightRange  = 50; // Range for the weights
-	global.biasRange    = 1; // Range of the bias
+	global.hiddenDepth  = 5; // How many hidden layers there should be
+	global.hiddenHeight = 9; // Height of hidden layers
+	global.weightRange  = 100; // Range for the weights
+	global.biasRange    = 2/INPUT.size; // Range of the bias
 	
 	#endregion
 
@@ -32,7 +32,7 @@ Used to change the neural network of everything else.
 #region Essentials
 
 // Needed
-global.currentTeams = 0; // How many teams are alive 
+global.currentTeams = global.totalTeams; // How many teams are alive 
 global.generation = 1; // What generation is this
 
 // Best

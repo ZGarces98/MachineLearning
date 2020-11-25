@@ -1,7 +1,13 @@
 /// @description Show Neural Nets
 
 // Draw Itself
-draw_self();
+if(!lost) {
+	draw_self();
+}
+else {
+	draw_sprite_ext(sprite_index,image_index,x,y,1,1,image_angle,c_gray,0.8);
+}
+
 
 #region Lines
 if(global.debugLines) {

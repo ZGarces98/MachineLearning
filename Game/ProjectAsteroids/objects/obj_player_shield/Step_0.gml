@@ -1,5 +1,10 @@
 /// @description ML
 
+if(lost) {
+	if(instance_exists(shieldID)) instance_destroy(shieldID);
+	return;
+}
+
 // Inherit the parent event
 event_inherited();
 
@@ -22,7 +27,6 @@ for(var i = 0; i < 360; i++) {
 		if(touchBullet) vision[i] = 2;
 	}
 	
-	vision[i] /= 2;
 }
 
 #endregion
@@ -40,12 +44,18 @@ if(instance_exists(mlController)) {
 }
 #endregion
 
+#region ML Points
+
 if(pointTimer >= pointRate) {
-	if(key_move == 1) {
+	if(key_move == 0) {
 		pointTimer = 0;
-		mlPoints++;
+		mlPoints--
+		if(mlPoints < 0) mlPoints = 0;
 	}
 }
 else {
 	pointTimer += deltatime;	
 }
+
+#endregion
+

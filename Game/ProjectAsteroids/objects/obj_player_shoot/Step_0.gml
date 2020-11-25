@@ -1,5 +1,7 @@
 /// @description Shooting
 
+if(lost) return;
+
 // Inherit the parent event
 event_inherited();
 
@@ -46,13 +48,11 @@ for(var i = 0; i < 360; i++) {
 		}		
 	}
 	
-	vision[i] /= 3;
-
 }
 
 #endregion
 
-#region ML Feed Forward 
+#region ML Feed Forward
 if(instance_exists(mlController)) {
 	
 	var xx    = x / room_width;
@@ -63,4 +63,19 @@ if(instance_exists(mlController)) {
 			   vision[0],vision[1],vision[2],vision[3],
 			   vision[4],vision[5],vision[6],vision[7]);
 }
+#endregion
+
+#region ML Points
+
+if(pointTimer >= pointRate) {
+	if(key_move == 0) {
+		pointTimer = 0;
+		mlPoints--
+		if(mlPoints < 0) mlPoints = 0;
+	}
+}
+else {
+	pointTimer += deltatime;	
+}
+
 #endregion

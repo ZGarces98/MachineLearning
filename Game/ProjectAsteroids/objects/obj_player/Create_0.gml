@@ -21,6 +21,12 @@ fric         = 0.05; // How fast the ship slows down
 
 #region Essentials
 
+	#region Gameplay
+	
+	lost = false; // Is it still in the game?
+	
+	#endregion
+
 	#region Physics
 	
 	hsp = 0;
@@ -42,5 +48,8 @@ fric         = 0.05; // How fast the ship slows down
 
 mlController = instance_create_depth(0,0,0,obj_mlcontroller);
 mlPoints = 0;
+
+pointTimer = 0;
+pointRate = 1;
 
 #endregion

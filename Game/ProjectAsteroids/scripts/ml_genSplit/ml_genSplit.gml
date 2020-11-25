@@ -112,9 +112,10 @@ function ml_genSplit(){
 		for(var t = 0; t < global.totalTeams; t++) {
 	
 			// Spawn bots
-			var randOffset = random_range(-posOffset,posOffset);
-			slot[t,PLAYERTYPE.shoot]  = instance_create_layer(room_width/2+randOffset,room_height/2+randOffset, "Players", obj_player_shoot);	
-			slot[t,PLAYERTYPE.shield] = instance_create_layer(room_width/2+randOffset,room_height/2+randOffset, "Players", obj_player_shield);
+			var randOffsetXX = random_range(-posOffset,posOffset);
+			var randOffsetYY = random_range(-posOffset,posOffset);
+			slot[t,PLAYERTYPE.shoot]  = instance_create_layer(room_width/2+randOffsetXX,room_height/2+randOffsetYY, "Players", obj_player_shoot);	
+			slot[t,PLAYERTYPE.shield] = instance_create_layer(room_width/2+randOffsetXX,room_height/2+randOffsetYY, "Players", obj_player_shield);
 	
 			// Set teams and ml controller
 			
@@ -270,6 +271,7 @@ function ml_genSplit(){
 	// Add next generation and reset timer
 	global.generation++;
 	global.gameTimer = 0;
+	global.currentTeams = global.totalTeams;
 	
 #endregion
 	

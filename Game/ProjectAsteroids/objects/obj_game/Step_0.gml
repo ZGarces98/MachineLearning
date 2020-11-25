@@ -1,19 +1,16 @@
 /// @description Restart Game when player count is lower
 
 #region Restart Game
-var teamCount = round(instance_number(obj_player) / 2);
-global.currentTeams = teamCount;
-
 if(global.totalTeams > 2) {
-	if(teamCount <= 4) {
+	if(global.currentTeams <= 1) {
 		ml_genSplit();		
 	}
 }
 else if(global.totalTeams == 2) {
-	if(teamCount == 1) game_restart();
+	if(global.currentTeams == 1) game_restart();
 }
 else if(global.totalTeams == 1){
-	if(teamCount == 0) game_restart();
+	if(global.currentTeams == 0) game_restart();
 }
 #endregion
 
