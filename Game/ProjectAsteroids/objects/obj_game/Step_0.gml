@@ -2,7 +2,7 @@
 
 #region Restart Game
 if(global.totalTeams > 2) {
-	if(global.currentTeams <= 1) {
+	if(global.currentTeams <= global.minTeam) {
 		ml_genSplit();		
 	}
 }
@@ -29,6 +29,12 @@ if(keyboard_check_pressed(keybindLine))
 	global.debugLines = !global.debugLines;	
 
 if(keyboard_check_pressed(keybindScore)) 
-	global.debugScore = !global.debugScore;	
+	global.debugScore = !global.debugScore;
+
+if(keyboard_check_pressed(keybindLeft)) 
+	global.debugLeftPanel = !global.debugLeftPanel;
+	
+if(keyboard_check_pressed(keybindTimer)) 
+	global.debugTimer = !global.debugTimer;
 
 #endregion

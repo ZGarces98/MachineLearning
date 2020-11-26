@@ -21,7 +21,10 @@ if(global.debugLines) {
 #region Score
 if(global.debugScore) {
 	draw_set_color(c_orange);
+	draw_set_halign(fa_center);
+	draw_set_valign(fa_middle);
 	draw_text_transformed(x,y,string(mlPoints),10,10,0);
+	draw_set_halign(fa_left);
 	draw_set_color(c_white);	
 }
 #endregion
