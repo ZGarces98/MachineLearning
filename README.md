@@ -2,6 +2,48 @@
 
 For our project, we’re going to use machine learning algorithms to play a tweaked version of the game, Asteroids. In the original game, there is a single ship that can avoid and shoot incoming asteroids. In our modified version of the game, we plan on adding an additional ship and adding enemy ships. We also decided to give the two ships asymmetric roles. One ship will have the ability to shoot and the other ship will have the ability to block. Within our modified game, the goal is to implement an algorithm that incentivizes the survival of both agents for as long as possible and dissuade a “lone wolf” mentality among the agents. Points will be awarded for every asteroid destroyed and enemy shots blocked to encourage this type of behavior. Bad behavior would include having one ship die or letting the timer run out. After some time of letting our program run, our agents should in theory be very good at surviving by utilizing each other’s strengths. The use of reinforcement learning will reward good behavior and punish bad behavior. This will then be stored in the neural network so that the agents can learn accordingly to avoid punishments and seek out rewards. This project will be made using the GameMaker Studio 2 game engine.
 
+# How to run it
+1. Go to "LaunchFiles" folder
+2. Run the ProjectAsteroids.exe (WINDOWS ONLY)
+
+# Controls
+A - Display left panel
+
+S - Display Timer
+
+Z - Display Vision Lines
+
+X - Display Fitness score
+
+Esc, P - Pause the game 
+
+# Pause Panels
+Total Teams - How many pairs of shooters and shields to start the game with.
+
+Min Teams - The minimum number of teams alive to start the crossover function and restart the game.
+
+NN Depth - The column of hidden layers.
+
+EXAMPLE 1 DEPTH:
+
+i  
+i h 
+i h o 
+i h o
+i h o 
+i h o
+i
+
+EXAMPLE 5 DEPTH:
+
+i  
+i h h h h h 
+i h h h h h o 
+i h h h h h o
+i h h h h h o 
+i h h h h h o
+i
+
 # Resources
 Slides: https://docs.google.com/presentation/d/1MkZgazbr3uIv6X89Am66AIcbSMc8RZOKFZqJVTDXpeg/edit?usp=sharing
 
