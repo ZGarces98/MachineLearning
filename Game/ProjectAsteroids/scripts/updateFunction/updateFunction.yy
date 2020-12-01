@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Activation Functions",
-    "path": "folders/Scripts/MyStuff/Helpers/Activation Functions.yy",
+    "name": "Backpropagation",
+    "path": "folders/Scripts/MyStuff/Helpers/Backpropagation.yy",
   },
   "resourceVersion": "1.0",
-  "name": "leakyReLU",
+  "name": "updateFunction",
   "tags": [],
   "resourceType": "GMScript",
 }

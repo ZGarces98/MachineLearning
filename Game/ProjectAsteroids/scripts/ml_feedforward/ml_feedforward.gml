@@ -42,7 +42,7 @@ function ml_feedforward(){
 	        }
         
 	        //Activation function
-	        output[o] = sigmoid(output[o] + bias[global.hiddenDepth]);
+	        output[o] = softMax(output[o] + bias[global.hiddenDepth]);
 	    }	
 	}
 }

@@ -46,16 +46,27 @@ if(instance_exists(mlController)) {
 
 #region ML Points
 
+// Move Reward
 if(pointTimer >= pointRate) {
-	if(key_move == 0) {
+	if(key_move == 1) {
 		pointTimer = 0;
-		mlPoints--
-		if(mlPoints < 0) mlPoints = 0;
+		mlPoints++;
 	}
 }
 else {
 	pointTimer += deltatime;	
 }
 
+// Spin Penalty
+if(spinTimer >= spinRate) {
+	if(key_left or key_right) {
+		spinTimer = 0;
+		mlPoints--;
+		if(mlPoints < 0) mlPoints = 0;
+	}
+}
+else {
+	spinTimer += deltatime;	
+}
 #endregion
 

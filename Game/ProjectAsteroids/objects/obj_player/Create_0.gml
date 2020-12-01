@@ -52,4 +52,7 @@ mlPoints = 0;
 pointTimer = 0;
 pointRate = 1;
 
+spinTimer = 0;
+spinRate = 0.5;
+
 #endregion

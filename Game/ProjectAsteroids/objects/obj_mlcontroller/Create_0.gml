@@ -63,7 +63,7 @@ enum OUTPUT {
 	for(var o = 0; o < OUTPUT.size; o++) { 
 		output[o] = 0;
 		for(var w = 0; w < global.hiddenHeight; w++) {
-			outputWeights[o, w] = random_range(-global.weightRange, global.weightRange);	
+			outputWeights[o][w] = random_range(-global.weightRange, global.weightRange);	
 		}
 	}
 	

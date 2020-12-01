@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Activation Functions",
-    "path": "folders/Scripts/MyStuff/Helpers/Activation Functions.yy",
+    "name": "Derivatives",
+    "path": "folders/Scripts/MyStuff/Helpers/Activation Functions/Derivatives.yy",
   },
   "resourceVersion": "1.0",
-  "name": "leakyReLU",
+  "name": "derivativeSSR",
   "tags": [],
   "resourceType": "GMScript",
 }

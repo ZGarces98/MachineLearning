@@ -6,7 +6,7 @@
     "path": "folders/Scripts/MyStuff/Helpers/Activation Functions.yy",
   },
   "resourceVersion": "1.0",
-  "name": "leakyReLU",
+  "name": "softMax",
   "tags": [],
   "resourceType": "GMScript",
 }

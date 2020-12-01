@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Helpers",
-    "path": "folders/Scripts/MyStuff/Helpers.yy",
+    "name": "Activation Functions",
+    "path": "folders/Scripts/MyStuff/Helpers/Activation Functions.yy",
   },
   "resourceVersion": "1.0",
   "name": "sigmoid",

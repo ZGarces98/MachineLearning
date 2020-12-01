@@ -1,5 +1,4 @@
-/// @description Used to select and spawn children
-
+/// @description Used to check fitness, select parent, and spawn children 
 
 function ml_genSplit(){
 	

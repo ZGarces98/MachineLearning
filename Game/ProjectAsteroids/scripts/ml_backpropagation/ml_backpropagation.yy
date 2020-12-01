@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Activation Functions",
-    "path": "folders/Scripts/MyStuff/Helpers/Activation Functions.yy",
+    "name": "MachineLearning",
+    "path": "folders/Scripts/MyStuff/MachineLearning.yy",
   },
   "resourceVersion": "1.0",
-  "name": "leakyReLU",
+  "name": "ml_backpropagation",
   "tags": [],
   "resourceType": "GMScript",
 }
