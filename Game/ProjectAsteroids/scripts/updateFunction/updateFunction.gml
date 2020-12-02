@@ -4,5 +4,5 @@
 /// @param learningRate - The learning rate
 
 function updateFunction(oldvalue, derivativeTotal, learningRate){
-	return oldvalue - (derivativeTotal - learningRate);
+	return oldvalue - (derivativeTotal*learningRate);
 }

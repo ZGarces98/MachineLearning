@@ -17,7 +17,8 @@ function ml_feedforward(){
 			}
 			
 			// Activation Function
-			hidden[0][h] = leakyReLU(hidden[0,h] + bias[0]);
+			hiddenRaw[0][h] = hidden[0][h] + bias[0];
+			hidden[0][h] = leakyReLU(hidden[0][h] + bias[0]);
 			
 		}
 		
@@ -30,6 +31,7 @@ function ml_feedforward(){
 				}
         
 				//Activation function
+				hiddenRaw[d][h] = hidden[d][h] + bias[d];
 				hidden[d][h] = leakyReLU(hidden[d][h] + bias[d]);
 			}
 		}
@@ -42,6 +44,7 @@ function ml_feedforward(){
 	        }
         
 	        //Activation function
+			outputRaw[o] = output[o] + bias[global.hiddenDepth];
 	        output[o] = softMax(output[o] + bias[global.hiddenDepth]);
 	    }	
 	}

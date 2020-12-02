@@ -102,6 +102,46 @@ function ml_genSplit(){
 	
 #endregion
 
+#region Backpropagation
+
+with(parentShoot1) {
+	with(mlController) {
+		target[0] = 1;
+		target[1] = 1;
+		target[2] = 0;
+		ml_backpropagation(target,1);	
+	}
+}
+
+with(parentShoot2) {
+	with(mlController) {
+		target[0] = 1;
+		target[1] = 1;
+		target[2] = 0;
+		ml_backpropagation(target,1);	
+	}
+}
+
+with(parentShield1) {
+	with(mlController) {
+		target[0] = 1;
+		target[1] = 1;
+		target[2] = 0;
+		ml_backpropagation(target,1);	
+	}
+}
+
+with(parentShield2) {
+	with(mlController) {
+		target[0] = 1;
+		target[1] = 1;
+		target[2] = 0;
+		ml_backpropagation(target,10);	
+	}
+}
+
+#endregion
+
 #region Crossover
 
 	// Settings change
