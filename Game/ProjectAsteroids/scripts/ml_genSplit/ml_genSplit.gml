@@ -430,6 +430,8 @@ if(backpropagation) {
 	if(global.gameType == GAMETYPE.single and global.spawnType == SPAWNTYPE.both) 
 		global.currentTeams *= 2;
 	
+	if(global.selectedPlayer != noone) global.selectedPlayer = instance_find(obj_player,0);
+	
 #endregion
 	
 }

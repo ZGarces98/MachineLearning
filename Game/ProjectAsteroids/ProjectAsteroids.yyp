@@ -319,6 +319,7 @@
     {"id":{"name":"spr_icon_unknown","path":"sprites/spr_icon_unknown/spr_icon_unknown.yy",},"order":24,},
     {"id":{"name":"uc_set_target_x","path":"scripts/uc_set_target_x/uc_set_target_x.yy",},"order":4,},
     {"id":{"name":"tweenline_to","path":"scripts/tweenline_to/tweenline_to.yy",},"order":14,},
+    {"id":{"name":"spr_nn_node","path":"sprites/spr_nn_node/spr_nn_node.yy",},"order":3,},
     {"id":{"name":"ease_quadout","path":"scripts/ease_quadout/ease_quadout.yy",},"order":24,},
     {"id":{"name":"tween_system_count_tweens","path":"scripts/tween_system_count_tweens/tween_system_count_tweens.yy",},"order":9,},
     {"id":{"name":"tl_playhead_set_mask_area","path":"scripts/tl_playhead_set_mask_area/tl_playhead_set_mask_area.yy",},"order":5,},

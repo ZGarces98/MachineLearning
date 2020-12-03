@@ -48,7 +48,7 @@ Used to change the neural network of everything else.
 
 #region Settings
 
-	global.totalTeams = 3;              // How many pairs of bots on screen
+	global.totalTeams = 4;              // How many pairs of bots on screen
 	global.gameType   = GAMETYPE.team;  // Whether teammates die too
 	global.spawnType  = SPAWNTYPE.both; // Should they spawn in pairs? 
 
@@ -63,8 +63,8 @@ Used to change the neural network of everything else.
 
 	#region Machine Learning
 	
-	global.hiddenDepth  = 3; // How many hidden layers there should be
-	global.hiddenHeight = 5; // Height of hidden layers
+	global.hiddenDepth  = 2; // How many hidden layers there should be
+	global.hiddenHeight = 7; // Height of hidden layers
 	global.weightRange  = 10; // Range for the weights
 	global.biasRange    = 10; // Range of the bias
 	
@@ -96,5 +96,8 @@ global.debugLines     = false; // Show the lines
 global.debugScore     = false; // Show the scoring of each
 global.debugLeftPanel = true; // Show the left panel
 global.debugTimer     = true; // Show the timer
+
+// Visuals
+global.selectedPlayer = noone;
 
 #endregion
