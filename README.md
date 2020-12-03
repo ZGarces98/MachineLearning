@@ -97,6 +97,18 @@ NN Weight - The range of the starting weights (ERASES CROSSOVER WEIGHTS IF CHANG
 
 NN BIAS - The range of the starting bias (ERASES CROSSOVER BIAS IF CHANGED). 1 means that the starting bias range from (-1, 1) and 10 means the starting bias range from (-10,1).
 
+Game Type - (Team, Single) - Team makes the agent's partner lose too, Single makes them keep going.
+
+Spawn Type - (shoot, shield, both) - Whether to only spawn shooters, shields, or both at the same time.
+
+H Activation - (LeakyReLU, Sigmoid) - The hidden layer activation function to use. 
+
+O Activation - (Sigmoid, Softplus) - The output layer activation function to use.
+
+# Visualize
+
+Want to see the NN in action? Click on one of the agents to see live!
+
 # Resources
 Slides: https://docs.google.com/presentation/d/1MkZgazbr3uIv6X89Am66AIcbSMc8RZOKFZqJVTDXpeg/edit?usp=sharing
 
