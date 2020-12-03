@@ -11,6 +11,7 @@ if(global.pause) {
 			draw_set_valign(fa_middle);
 			draw_set_color(c_maroon);
 			switch(display) {
+				
 				case DISPLAY.totalteams:
 				draw_text_transformed(x,y,"Total Teams: " + string(obj_ui_values.teams),xSize,ySize,0);
 				break;
@@ -29,6 +30,60 @@ if(global.pause) {
 				case DISPLAY.bias:
 				draw_text_transformed(x,y,"NN Bias: " + string(obj_ui_values.newBias),xSize,ySize,0);
 				break;
+				
+				
+				case DISPLAY.hiddenActivation:
+				draw_set_halign(fa_right);
+				draw_set_valign(fa_middle);
+				
+				var value = "";
+				switch(obj_ui_values.newHiddenActivation) {
+					case OUTPUTA.sigmoid:
+						value = "Sigmoid";
+						break;
+					case HIDDENA.leakyrelu:
+						value = "LeakyRelu";
+						break;
+				}
+				
+				draw_text_transformed(x,y,"H Activation: " + value ,xSize,ySize,0);
+				break;
+				case DISPLAY.outputActivation:
+				draw_set_halign(fa_right);
+				draw_set_valign(fa_middle);
+				
+				var value = "";
+				switch(obj_ui_values.newOutputActivation) {
+					case OUTPUTA.sigmoid:
+						value = "Sigmoid";
+						break;
+					case OUTPUTA.softPlus:
+						value = "SoftPlus";
+						break;
+				}
+				
+				draw_text_transformed(x,y,"O Activation: " + value ,xSize,ySize,0);
+				break;
+				
+				case DISPLAY.gameType:
+					var value = "";
+					if(obj_ui_values.newGameType == GAMETYPE.single) value = "SINGLE";
+					if(obj_ui_values.newGameType == GAMETYPE.team) value = "TEAM";
+					draw_set_halign(fa_right);
+					draw_set_valign(fa_middle);
+					draw_text_transformed(x,y,"GameType: " + value ,xSize,ySize,0);
+					break;
+					
+				case DISPLAY.spawnType:
+					var value = "";
+					if(obj_ui_values.newSpawnType == SPAWNTYPE.shoot) value = "SHOOT";
+					if(obj_ui_values.newSpawnType == SPAWNTYPE.shield) value = "SHIELD";
+					if(obj_ui_values.newSpawnType == SPAWNTYPE.both) value = "BOTH";
+					draw_set_halign(fa_right);
+					draw_set_valign(fa_middle);
+					draw_text_transformed(x,y,"SpawnType: " + value ,xSize,ySize,0);
+					break;
+				
 			}
 			draw_set_color(c_white);
 		}

@@ -6,7 +6,7 @@
     "path": "folders/Scripts/MyStuff/Helpers/Activation Functions/Derivatives.yy",
   },
   "resourceVersion": "1.0",
-  "name": "derivativeSoftMax",
+  "name": "derivativeSoftPlus",
   "tags": [],
   "resourceType": "GMScript",
 }

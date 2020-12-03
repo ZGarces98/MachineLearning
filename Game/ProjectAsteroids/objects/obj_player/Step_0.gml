@@ -29,20 +29,7 @@ y += vsp;
 
 // Collision
 if(place_meeting(x,y,obj_asteroid)) {
-	with(obj_inputController) {
-		var team = other.mlController.team;
-		with(slot[team,PLAYERTYPE.shoot]) {
-			lost = true;
-			mlPoints -= round((mlPoints/2));
-			if(mlPoints < 0) mlPoints = 0;
-		}
-		with(slot[team,PLAYERTYPE.shield]) {
-			lost = true;
-			mlPoints -= round((mlPoints/2));
-			if(mlPoints < 0) mlPoints = 0;
-		}
-		global.currentTeams--;
-	}
+	scr_lost(id);
 }
 
 #region Room Wrap

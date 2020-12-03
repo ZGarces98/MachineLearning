@@ -30,6 +30,22 @@ enum BUTTON {
 	increaseBias,
 	decreaseBias,
 	
+	// HiddenActivation
+	increaseHiddenActivation,
+	decreaseHiddenActivation,
+	
+	// OutputActivation
+	increaseOutputActivation,
+	decreaseOutputActivation,
+	
+	// Change GameType
+	increaseGameType,
+	decreaseGameType,
+	
+	// Change SpawnType
+	increaseSpawnType,
+	decreaseSpawnType,
+	
 	// Reset
 	reset
 	

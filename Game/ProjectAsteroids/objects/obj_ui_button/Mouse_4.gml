@@ -51,15 +51,43 @@ if(global.pause) {
 			case BUTTON.decreaseBias:
 				obj_ui_values.newBias--;
 				break;
+			
+			// Hidden Activation
+			case BUTTON.increaseHiddenActivation:
+				obj_ui_values.newHiddenActivation++;
+				break;
+			case BUTTON.decreaseHiddenActivation:
+				obj_ui_values.newHiddenActivation--;
+				break;
+			
+			// Output Activation 
+			case BUTTON.increaseOutputActivation:
+				obj_ui_values.newOutputActivation++;
+				break;
+			case BUTTON.decreaseOutputActivation:
+				obj_ui_values.newOutputActivation--;
+				break;
+				
+			// Game Type
+			case BUTTON.increaseGameType:
+				obj_ui_values.newGameType++;
+				break;
+			case BUTTON.decreaseGameType:
+				obj_ui_values.newGameType--;
+				break;
+			
+			// SpawnType
+			case BUTTON.increaseSpawnType:
+				obj_ui_values.newSpawnType++;
+				break;
+			case BUTTON.decreaseSpawnType:
+				obj_ui_values.newSpawnType--;
+				break;
+				
 				
 			// Reset
 			case BUTTON.reset:
-				global.gameTimer = 0;
-				global.generation = 0;
-				global.bestGeneration = 1;
-				global.bestTime = 0;
-				global.changed = true;
-				ml_genSplit();
+				ml_reset();
 				break;
 		
 		}

@@ -7,9 +7,50 @@ Used to change the neural network of everything else.
 
 */
 
+#region Enums
+
+	#region Activations 
+	
+	enum HIDDENA {
+		sigmoid,
+		leakyrelu,
+		size
+	}
+
+	enum OUTPUTA {
+		sigmoid,
+		softPlus,
+		size
+	}
+
+	#endregion
+	
+	#region Game Styles
+	
+	// Does death kill their teammate?
+	enum GAMETYPE {
+		single,
+		team,
+		size
+	}
+	
+	// Should they spawn in pairs?
+	enum SPAWNTYPE {
+		shoot,
+		shield,
+		both,
+		size
+	}
+	
+	#endregion
+
+#endregion
+
 #region Settings
 
-	global.totalTeams = 4; // How many pairs of bots on screen
+	global.totalTeams = 3;              // How many pairs of bots on screen
+	global.gameType   = GAMETYPE.team;  // Whether teammates die too
+	global.spawnType  = SPAWNTYPE.both; // Should they spawn in pairs? 
 
 	#region Debug Keys
 	
@@ -22,10 +63,14 @@ Used to change the neural network of everything else.
 
 	#region Machine Learning
 	
-	global.hiddenDepth  = 1; // How many hidden layers there should be
+	global.hiddenDepth  = 3; // How many hidden layers there should be
 	global.hiddenHeight = 5; // Height of hidden layers
-	global.weightRange  = 1; // Range for the weights
-	global.biasRange    = 1; // Range of the bias
+	global.weightRange  = 10; // Range for the weights
+	global.biasRange    = 10; // Range of the bias
+	
+	// Activations
+	global.hiddenActivation = HIDDENA.leakyrelu;
+	global.outputActivation = OUTPUTA.softPlus;
 	
 	#endregion
 
@@ -35,7 +80,11 @@ Used to change the neural network of everything else.
 
 // Needed
 global.currentTeams = global.totalTeams; // How many teams are alive 
+if(global.gameType == GAMETYPE.single and global.spawnType == SPAWNTYPE.both) 
+	global.currentTeams *= 2;
+
 global.minTeam = 1; // The minimum team count for gensplit
+if(global.totalTeams == 1) global.minTeam = 0;
 global.generation = 1; // What generation is this
 
 // Best

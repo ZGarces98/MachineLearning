@@ -17,8 +17,16 @@ function ml_feedforward(){
 			}
 			
 			// Activation Function
-			hiddenRaw[0][h] = hidden[0][h] + bias[0];
-			hidden[0][h] = leakyReLU(hidden[0][h] + bias[0]);
+			hiddenRaw[0][h] = hidden[0][h] + bias[0]; // Save for backpropagation
+			
+			switch(global.hiddenActivation) {
+				case HIDDENA.leakyrelu:
+					hidden[0][h] = leakyReLU(hidden[0][h] + bias[0]);
+					break;
+				case HIDDENA.sigmoid:
+					hidden[0][h] = sigmoid(hidden[0][h] + bias[0]);
+					break;
+			}
 			
 		}
 		
@@ -31,8 +39,17 @@ function ml_feedforward(){
 				}
         
 				//Activation function
-				hiddenRaw[d][h] = hidden[d][h] + bias[d];
-				hidden[d][h] = leakyReLU(hidden[d][h] + bias[d]);
+				hiddenRaw[d][h] = hidden[d][h] + bias[d]; // Save for backpropagation
+				
+				switch(global.hiddenActivation) {
+					case HIDDENA.leakyrelu:
+						hidden[d][h] = leakyReLU(hidden[d][h] + bias[d]);
+						break;
+					case HIDDENA.sigmoid:
+						hidden[d][h] = sigmoid(hidden[d][h] + bias[d]);
+						break;
+				}
+				
 			}
 		}
 		
@@ -44,8 +61,17 @@ function ml_feedforward(){
 	        }
         
 	        //Activation function
-			outputRaw[o] = output[o] + bias[global.hiddenDepth];
-	        output[o] = softMax(output[o] + bias[global.hiddenDepth]);
+			outputRaw[o] = output[o] + bias[global.hiddenDepth]; // Save for backpropagation
+			
+			switch(global.outputActivation) {
+				case OUTPUTA.softPlus:
+					output[o] = softPlus(output[o] + bias[global.hiddenDepth]);
+					break;
+				case OUTPUTA.sigmoid:
+					output[o] = sigmoid(output[o] + bias[global.hiddenDepth]);
+					break;
+			}
+			
 	    }	
 	}
 }

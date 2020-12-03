@@ -2,17 +2,28 @@
 
 #region Keybinds
 
+var move = 1;
+var turn = 0;	
+
 if(instance_exists(obj_player_shoot)) {
-	with(obj_player_shoot) {
-		if(!lost) {
-			var move = 1
-			var turn = sign(-angle_difference(image_angle, point_direction(other.x,other.y,x,y)));
+	
+	var closestID = instance_find(obj_player_shoot, 0);
+	var shootCount = instance_number(obj_player_shoot);
+	for(var i = 1; i < shootCount; i++) {
+		with(instance_find(obj_player_shoot, i)) {
+			if(!lost) {
+				with(other.id) {
+					if(distance_to_object(other.id) < distance_to_object(closestID)) {
+						closestID = instance_find(obj_player_shoot, i);	
+					}
+				}
+			}
 		}
 	}
-}
-else {
-	var move = 0;
-	var turn = 0;	
+	
+	with(closestID) {
+		turn = sign(-angle_difference(image_angle, point_direction(x,y,other.x,other.y)));
+	}
 }
 
 image_angle += turn * turnSpeed * deltatime;

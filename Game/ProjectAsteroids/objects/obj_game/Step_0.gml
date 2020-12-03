@@ -1,17 +1,9 @@
 /// @description Restart Game when player count is lower
 
 #region Restart Game
-if(global.totalTeams > 2) {
-	if(global.currentTeams <= global.minTeam) {
-		ml_genSplit();		
-	}
-}
-else if(global.totalTeams == 2) {
-	if(global.currentTeams == 1) game_restart();
-}
-else if(global.totalTeams == 1){
-	if(global.currentTeams == 0) game_restart();
-}
+
+if(global.currentTeams <= global.minTeam) ml_genSplit();
+
 #endregion
 
 #region Best Score

@@ -7,6 +7,10 @@ enum DISPLAY {
 	hiddendepth,
 	hiddenHeight,
 	weights,
+	hiddenActivation,
+	outputActivation,
+	gameType,
+	spawnType,
 	bias
 }
 
