@@ -63,10 +63,10 @@ Used to change the neural network of everything else.
 
 	#region Machine Learning
 	
-	global.hiddenDepth  = 2; // How many hidden layers there should be
-	global.hiddenHeight = 7; // Height of hidden layers
-	global.weightRange  = 10; // Range for the weights
-	global.biasRange    = 10; // Range of the bias
+	global.hiddenDepth  = 1; // How many hidden layers there should be
+	global.hiddenHeight = 15; // Height of hidden layers
+	global.weightRange  = 100; // Range for the weights
+	global.biasRange    = 100; // Range of the bias
 	
 	// Activations
 	global.hiddenActivation = HIDDENA.leakyrelu;

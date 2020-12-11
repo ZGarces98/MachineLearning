@@ -57,8 +57,8 @@ if(global.selectedPlayer == id) {
 		startX  = room_width/2 - 340;
 	}
 	
-	var offsetX = 150;
-	var offsetY = 50;
+	var offsetX = 125;
+	var offsetY = 30;
 	var biasOffset = 30;
 	var maxNum = 1;
 	

@@ -2,5 +2,5 @@
 /// @param x - The output to use as the activation function.
 
 function derivativeSoftPlus(x){
-	return (exp(x) / (1 + exp(x)));
+	return 1 / (1 + exp(-x));
 }

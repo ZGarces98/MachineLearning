@@ -8,18 +8,25 @@ var totalError = derivativeSSR(targetArray, output);
 #region Output to Hidden
 
 for(var o = 0; o < OUTPUT.size; o++) { 
+	
 	for(var w = 0; w < global.hiddenHeight; w++) {
 		
 		var totalDer = 0;
+		if(is_nan(outputWeights[o][w])) outputWeights[o][w] = random_range(-2/INPUT.size,2/INPUT.size);
 		
 		switch(global.outputActivation) {
 			case OUTPUTA.softPlus:
-				totalDer = totalError * derivativeSoftPlus(outputRaw[o]) * outputWeights[o][w];
+				var activeDer = derivativeSoftPlus(outputRaw[o]);
+				if(is_nan(activeDer)) activeDer = 0;
+				totalDer = totalError * activeDer * outputWeights[o][w];
 				break;
 			case OUTPUTA.sigmoid:
-				totalDer = totalError * derivativeSigmoid(outputRaw[o]) * outputWeights[o][w];
+				var activeDer = derivativeSigmoid(outputRaw[o]);
+				if(is_nan(activeDer)) activeDer = 0;
+				totalDer = totalError * activeDer * outputWeights[o][w];
 				break;
 		}
+		
 		outputWeights[o][w] = updateFunction(outputWeights[o][w], totalDer, learningRate);
 	}
 }
@@ -28,11 +35,16 @@ for(var o = 0; o < OUTPUT.size; o++) {
 var totalDerOutBias = 0;
 for(var o = 0; o < OUTPUT.size; o++) {
 	switch(global.outputActivation) {
+		
 	case OUTPUTA.softPlus:
-		totalDerOutBias += totalError * derivativeSoftPlus(outputRaw[o]);
+		var derivAct = derivativeSoftPlus(outputRaw[o]);
+		if(is_nan(derivAct)) derivAct = random_range(-2/INPUT.size,2/INPUT.size);
+		totalDerOutBias += totalError * derivAct;
 		break;
 	case OUTPUTA.sigmoid:
-		totalDerOutBias += totalError * derivativeSigmoid(outputRaw[o]);
+		var derivAct = derivativeSigmoid(outputRaw[o]);
+		if(is_nan(derivAct)) derivAct = random_range(-2/INPUT.size,2/INPUT.size);
+		totalDerOutBias += totalError * derivAct;
 		break;
 	}
 	if(o == OUTPUT.size-1) {
@@ -48,24 +60,34 @@ for(var d = global.hiddenDepth-1; d > 1; d--) {
 	for(var h = 0; h < global.hiddenHeight; h++) {
 		for(var w = 0; w < global.hiddenHeight; w++) {
 			
+			if(is_nan(hidden[d][h])) hidden[d][h] = random_range(-2/INPUT.size,2/INPUT.size);
+			
 			var totalDer = 0;
 			switch(global.hiddenActivation) {
 				case HIDDENA.leakyrelu:
-					totalDer = totalError * derivativeLeakyReLU(hiddenRaw[d][h]) * hidden[d][h];
+					var derivAct = derivativeLeakyReLU(hiddenRaw[d][h]);
+					if(is_nan(derivAct)) derivAct = random_range(-2/INPUT.size,2/INPUT.size);
+					totalDer = totalError * derivAct * hidden[d][h];
 					break;
 				case HIDDENA.sigmoid:
-					totalDer = totalError * derivativeSigmoid(hiddenRaw[d][h]) * hidden[d][h];
+					var derivAct = derivativeSigmoid(hiddenRaw[d][h]);
+					if(is_nan(derivAct)) derivAct = random_range(-2/INPUT.size,2/INPUT.size);
+					totalDer = totalError * derivAct * hidden[d][h];
 					break;
 			}
 			hiddenWeight[d][h][w] = updateFunction(hiddenWeight[d][h][w], totalDer, learningRate);
 		}
 		
 		switch(global.hiddenActivation) {
-			case HIDDENA.leakyrelu:	
-				totalDerOutBias += totalError * derivativeLeakyReLU(hiddenRaw[d][h]);
+			case HIDDENA.leakyrelu:
+				var derivAct = derivativeLeakyReLU(hiddenRaw[d][h]);
+				if(is_nan(derivAct)) derivAct = random_range(-2/INPUT.size,2/INPUT.size);
+				totalDerOutBias += totalError * derivAct;
 				break;
-			case HIDDENA.sigmoid:	
-				totalDerOutBias += totalError * derivativeSigmoid(hiddenRaw[d][h]);
+			case HIDDENA.sigmoid:
+			var derivAct = derivativeSigmoid(hiddenRaw[d][h]);
+				if(is_nan(derivAct)) derivAct = random_range(-2/INPUT.size,2/INPUT.size);
+				totalDerOutBias += totalError * derivAct;
 				break;
 		}
 		
@@ -82,13 +104,19 @@ for(var d = global.hiddenDepth-1; d > 1; d--) {
 for(var h = 0; h < global.hiddenHeight; h++) {
 	for(var w = 0; w < INPUT.size; w++) {
 		
+		if(is_nan(hidden[0][h])) hidden[0][h] = random_range(-2/INPUT.size,2/INPUT.size);
+		
 		var totalDer = 0;
 		switch(global.hiddenActivation) {
 			case HIDDENA.leakyrelu:	
-				totalDer = totalError * derivativeLeakyReLU(hiddenRaw[0][h]) * hidden[0][h];
+				var derivAct = derivativeLeakyReLU(hiddenRaw[0][h]);
+				if(is_nan(derivAct)) derivAct = random_range(-2/INPUT.size,2/INPUT.size);
+				totalDer = totalError * derivAct * hidden[0][h];
 				break;
 			case HIDDENA.sigmoid:
-				totalDer = totalError * derivativeSigmoid(hiddenRaw[0][h]) * hidden[0][h];
+				var derivAct = derivativeSigmoid(hiddenRaw[0][h]);
+				if(is_nan(derivAct)) derivAct = random_range(-2/INPUT.size,2/INPUT.size);
+				totalDer = totalError * derivAct * hidden[0][h];
 				break;
 		}
 		

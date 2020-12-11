@@ -109,7 +109,7 @@ function ml_genSplit(){
 
 #region Backpropagation
 
-var backLearningRate = 0.5;
+var backLearningRate = 0.01;
 var backpropagation = true;
 
 if(backpropagation) {

@@ -4,10 +4,13 @@
 
 function derivativeSSR(targetArray, outputArray){
 
-var outputSize = array_length(outputArray);
 var total = 0;
-for(var i = 0; i < outputSize; i++) {
-	total += (-2) * (outputArray[i] - targetArray[i]);
+for(var i = 0; i < 3; i++) {
+	var predicted = outputArray[i];
+	var target = targetArray[i];
+	if(is_nan(predicted)) predicted = 0;
+	if(is_nan(target)) target = 0;
+	total += 2 * (predicted - target);
 }
 
 return total;
