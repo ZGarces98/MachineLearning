@@ -25,4 +25,4 @@ if(newSpawnType < 0) newSpawnType = SPAWNTYPE.size -1;
 
 // Data Scaling
 if(newDataScaling >= DATASCALE.size) newDataScaling = 0;
-if(newDataScaling < 0) newDataScaling = DATASCALE.size;
+if(newDataScaling < 0) newDataScaling = DATASCALE.size - 1;
