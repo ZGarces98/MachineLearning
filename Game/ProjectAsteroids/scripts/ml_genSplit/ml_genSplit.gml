@@ -111,6 +111,7 @@ function ml_genSplit(){
 
 var backLearningRate = 0.01;
 var backpropagation = true;
+if(global.outputActivation == OUTPUTA.softMax) backpropagation = false;
 
 if(backpropagation) {
 	if(parentShoot1 != noone) {

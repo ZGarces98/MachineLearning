@@ -63,6 +63,9 @@ if(global.pause) {
 					case OUTPUTA.softPlus:
 						value = "SoftPlus";
 						break;
+					case OUTPUTA.softMax:
+						value = "SoftMax";
+						break;
 				}
 				
 				draw_text_transformed(x,y,"O Activation: " + value ,xSize,ySize,0);

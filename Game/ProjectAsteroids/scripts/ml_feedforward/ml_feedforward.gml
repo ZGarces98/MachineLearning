@@ -80,5 +80,12 @@ function ml_feedforward(){
 			
 	    }
 		
+		// SoftMax
+		if(global.outputActivation == OUTPUTA.softMax) {
+			for(var i = 0; i < OUTPUT.size; i++) {
+				output[i] = softMax(outputRaw[i]);
+			}
+		}
+		
 	}
 }

@@ -21,6 +21,7 @@ Used to change the neural network of everything else.
 	enum OUTPUTA {
 		sigmoid,
 		softPlus,
+		softMax,
 		size
 	}
 
@@ -75,13 +76,13 @@ Used to change the neural network of everything else.
 
 	#region Machine Learning
 	
-	global.hiddenDepth  = 1; // How many hidden layers there should be
+	global.hiddenDepth  = 1;  // How many hidden layers there should be
 	global.hiddenHeight = 15; // Height of hidden layers
-	global.weightRange  = 1; // Range for the weights
-	global.biasRange    = 1; // Range of the bias
+	global.weightRange  = 1;  // Range for the weights
+	global.biasRange    = 1;  // Range of the bias
 	
 	// Activations
-	global.hiddenActivation = HIDDENA.leakyrelu;
+	global.hiddenActivation = HIDDENA.swish;
 	global.outputActivation = OUTPUTA.sigmoid;
 	
 	#endregion
