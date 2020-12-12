@@ -84,6 +84,13 @@ if(global.pause) {
 				obj_ui_values.newSpawnType--;
 				break;
 				
+			// Data Scale
+			case BUTTON.increaseDataScale:
+				obj_ui_values.newDataScaling++;
+				break;
+			case BUTTON.decreaseDataScale:
+				obj_ui_values.newDataScaling--;
+				break;
 				
 			// Reset
 			case BUTTON.reset:

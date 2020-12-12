@@ -16,3 +16,5 @@ newOutputActivation = global.outputActivation;
 
 newGameType = global.gameType;
 newSpawnType = global.spawnType;
+
+newDataScaling = global.dataScale;

@@ -10,6 +10,8 @@ if(team != noone and botType != noone) {
 	if(random(output[OUTPUT.left]) >= random_range(0,1)) left = 1;
 	if(random(output[OUTPUT.right]) >= random_range(0,1)) right = 1;
 	
+	
+	
 	with(obj_inputController) {
 		with(slot[other.team,other.botType]) {
 			key_move  =  move;

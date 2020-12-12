@@ -46,6 +46,10 @@ enum BUTTON {
 	increaseSpawnType,
 	decreaseSpawnType,
 	
+	// Data Scake
+	increaseDataScale,
+	decreaseDataScale,
+	
 	// Reset
 	reset
 	

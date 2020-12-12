@@ -11,6 +11,7 @@ enum DISPLAY {
 	outputActivation,
 	gameType,
 	spawnType,
+	dataScale,
 	bias
 }
 

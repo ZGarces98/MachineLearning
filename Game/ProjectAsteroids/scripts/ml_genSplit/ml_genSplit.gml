@@ -219,6 +219,7 @@ if(backpropagation) {
 			global.outputActivation = newOutputActivation;
 			global.gameType = newGameType;
 			global.spawnType = newSpawnType;
+			global.dataScale = newDataScaling;
 		}
 		
 		// Spawn Fresh Bots

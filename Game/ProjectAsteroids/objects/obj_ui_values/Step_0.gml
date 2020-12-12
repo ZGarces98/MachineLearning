@@ -22,3 +22,7 @@ if(newGameType < 0) newGameType = GAMETYPE.size -1;
 // GameType
 if(newSpawnType >= SPAWNTYPE.size) newSpawnType = 0;
 if(newSpawnType < 0) newSpawnType = SPAWNTYPE.size -1;
+
+// Data Scaling
+if(newDataScaling >= DATASCALE.size) newDataScaling = 0;
+if(newDataScaling < 0) newDataScaling = DATASCALE.size;

@@ -14,6 +14,7 @@ Used to change the neural network of everything else.
 	enum HIDDENA {
 		sigmoid,
 		leakyrelu,
+		swish,
 		size
 	}
 
@@ -43,14 +44,25 @@ Used to change the neural network of everything else.
 	}
 	
 	#endregion
+	
+	#region Data Scaling
+	
+	enum DATASCALE {
+		normal,
+		raw,
+		size
+	}
+	
+	#endregion
 
 #endregion
 
 #region Settings
 
-	global.totalTeams = 4;              // How many pairs of bots on screen
-	global.gameType   = GAMETYPE.team;  // Whether teammates die too
-	global.spawnType  = SPAWNTYPE.both; // Should they spawn in pairs? 
+	global.totalTeams = 4;                // How many pairs of bots on screen
+	global.gameType   = GAMETYPE.team;    // Whether teammates die too
+	global.spawnType  = SPAWNTYPE.both;   // Should they spawn in pairs? 
+	global.dataScale  = DATASCALE.normal; // Should you normalize the input before ff?
 
 	#region Debug Keys
 	
@@ -65,12 +77,12 @@ Used to change the neural network of everything else.
 	
 	global.hiddenDepth  = 1; // How many hidden layers there should be
 	global.hiddenHeight = 15; // Height of hidden layers
-	global.weightRange  = 100; // Range for the weights
-	global.biasRange    = 100; // Range of the bias
+	global.weightRange  = 1; // Range for the weights
+	global.biasRange    = 1; // Range of the bias
 	
 	// Activations
 	global.hiddenActivation = HIDDENA.leakyrelu;
-	global.outputActivation = OUTPUTA.softPlus;
+	global.outputActivation = OUTPUTA.sigmoid;
 	
 	#endregion
 

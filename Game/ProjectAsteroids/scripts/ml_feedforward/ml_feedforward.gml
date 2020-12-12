@@ -26,6 +26,9 @@ function ml_feedforward(){
 				case HIDDENA.sigmoid:
 					hidden[0][h] = sigmoid(hidden[0][h] + bias[0]);
 					break;
+				case HIDDENA.swish:
+					hidden[0][h] = swish(hidden[0][h] + bias[0]);
+					break;
 			}
 			
 		}
@@ -47,6 +50,9 @@ function ml_feedforward(){
 						break;
 					case HIDDENA.sigmoid:
 						hidden[d][h] = sigmoid(hidden[d][h] + bias[d]);
+						break;
+					case HIDDENA.swish:
+						hidden[d][h] = swish(hidden[d][h] + bias[d]);
 						break;
 				}
 				
@@ -72,6 +78,7 @@ function ml_feedforward(){
 					break;
 			}
 			
-	    }	
+	    }
+		
 	}
 }

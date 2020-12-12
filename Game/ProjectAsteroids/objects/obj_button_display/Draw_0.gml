@@ -44,6 +44,9 @@ if(global.pause) {
 					case HIDDENA.leakyrelu:
 						value = "LeakyRelu";
 						break;
+					case HIDDENA.swish:
+						value = "Swish";
+						break;
 				}
 				
 				draw_text_transformed(x,y,"H Activation: " + value ,xSize,ySize,0);
@@ -84,6 +87,15 @@ if(global.pause) {
 					draw_text_transformed(x,y,"SpawnType: " + value ,xSize,ySize,0);
 					break;
 				
+				
+				case DISPLAY.dataScale:
+					var value = "";
+					if(obj_ui_values.newDataScaling == DATASCALE.normal) value = "NORMALIZED";
+					if(obj_ui_values.newDataScaling == DATASCALE.raw)    value = "RAW";
+					draw_set_halign(fa_right);
+					draw_set_valign(fa_middle);
+					draw_text_transformed(x,y,"DataScale: " + value ,xSize,ySize,0);
+					break;
 			}
 			draw_set_color(c_white);
 		}
