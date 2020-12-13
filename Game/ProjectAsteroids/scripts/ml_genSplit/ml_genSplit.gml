@@ -4,8 +4,8 @@ function ml_genSplit(){
 	
 #region Fitness and Selection
 	
-	var parentShoot1 = noone;
-	var parentShoot2 = noone;
+	var parentShoot1  = noone;
+	var parentShoot2  = noone;
 	var parentShield1 = noone;
 	var parentShield2 = noone;
 	
@@ -13,11 +13,11 @@ function ml_genSplit(){
 		#region Shoot
 	
 		// Total Shoot Points
-		var totalPointsShoot = 0;
+		var totalPointsShoot = 1;
 		var totalShoot = instance_number(obj_player_shoot);
 		for(var i = 0; i < totalShoot; i++) {
 			with(instance_find(obj_player_shoot, i)) {
-				totalPointsShoot += mlPoints;	
+				if(mlPoints > totalPointsShoot) totalPointsShoot = mlPoints;	
 			}
 		}
 	
@@ -28,6 +28,7 @@ function ml_genSplit(){
 				var chance     = random_range(0, 1);
 				var shootShip  = instance_find(obj_player_shoot, i);
 				var shipChance = shootShip.mlPoints / totalPointsShoot;
+				shipChance = clamp(shipChance, 0, 0.95);
 				if(chance < shipChance) {
 					if(shootSelected == 0) {
 						parentShoot1 = shootShip;
@@ -57,11 +58,11 @@ function ml_genSplit(){
 		#region Shield
 	
 		// Total Shield Points
-		var totalPointsShield = 0;
+		var totalPointsShield = 1;
 		var totalShield = instance_number(obj_player_shield);
 		for(var i = 0; i < totalShield; i++) {
 			with(instance_find(obj_player_shield, i)) {
-				totalPointsShield += mlPoints;	
+				if(mlPoints > totalPointsShield) totalPointsShield = mlPoints;	
 			}
 		}
 	
@@ -72,6 +73,7 @@ function ml_genSplit(){
 				var chance     = random_range(0, 1);
 				var shieldShip  = instance_find(obj_player_shield, i);
 				var shipChance = shieldShip.mlPoints / totalPointsShield;
+				shipChance = clamp(shipChance, 0, 0.95);
 				if(chance < shipChance) {
 					if(shieldSelected == 0) {
 						parentShield1 = shieldShip;
@@ -110,7 +112,7 @@ function ml_genSplit(){
 #region Backpropagation
 
 var backLearningRate = 0.01;
-var backpropagation = true;
+var backpropagation = false;
 if(global.outputActivation == OUTPUTA.softMax) backpropagation = false;
 
 if(backpropagation) {
