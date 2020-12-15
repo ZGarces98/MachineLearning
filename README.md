@@ -7,6 +7,8 @@ For our project, we’re going to use machine learning algorithms to play a twea
 1. Go to "LaunchFiles" folder
 2. Run the ProjectAsteroids.exe (WINDOWS ONLY)
 
+OR Play it here: https://spagato.itch.io/machine-learning-asteroids. (Not completely tested)
+
 # Controls
 
 A - Display left panel
