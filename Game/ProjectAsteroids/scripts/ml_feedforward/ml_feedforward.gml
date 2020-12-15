@@ -81,10 +81,18 @@ function ml_feedforward(){
 	    }
 		
 		// SoftMax
-		if(global.outputActivation == OUTPUTA.softMax) {
-			for(var i = 0; i < OUTPUT.size; i++) {
-				output[i] = softMax(outputRaw[i]);
-			}
+		
+		switch(global.outputActivation) {
+			case OUTPUTA.softMax:
+				for(var i = 0; i < OUTPUT.size; i++) {
+					output[i] = softMax(outputRaw[i]);
+				}
+				break;
+			case OUTPUTA.unstableSoftMax:
+				for(var i = 0; i < OUTPUT.size; i++) {
+					output[i] = unstableSoftMax(outputRaw[i]);
+				}
+				break;
 		}
 		
 	}
