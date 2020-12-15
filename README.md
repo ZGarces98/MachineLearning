@@ -101,7 +101,7 @@ Game Type - (Team, Single) - Team makes the agent's partner lose too, Single mak
 
 Spawn Type - (shoot, shield, both) - Whether to only spawn shooters, shields, or both at the same time.
 
-H Activation - (LeakyReLU, Sigmoid) - The hidden layer activation function to use. 
+H Activation - (LeakyReLU, Sigmoid, Swish) - The hidden layer activation function to use. 
 
 O Activation - (Sigmoid, Softplus, SoftMax, Unstable SoftMax) - The output layer activation function to use.
 
