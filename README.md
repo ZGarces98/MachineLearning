@@ -7,6 +7,8 @@ For our project, we’re going to use machine learning algorithms to play a twea
 1. Go to "LaunchFiles" folder
 2. Run the ProjectAsteroids.exe (WINDOWS ONLY)
 
+OR Play it here: https://spagato.itch.io/machine-learning-asteroids. (Not completely tested)
+
 # Controls
 
 A - Display left panel
@@ -101,9 +103,11 @@ Game Type - (Team, Single) - Team makes the agent's partner lose too, Single mak
 
 Spawn Type - (shoot, shield, both) - Whether to only spawn shooters, shields, or both at the same time.
 
-H Activation - (LeakyReLU, Sigmoid) - The hidden layer activation function to use. 
+H Activation - (LeakyReLU, Sigmoid, Swish) - The hidden layer activation function to use. 
 
-O Activation - (Sigmoid, Softplus) - The output layer activation function to use.
+O Activation - (Sigmoid, Softplus, SoftMax, Unstable SoftMax) - The output layer activation function to use.
+
+Data Scale - (Normalized, Raw) - Make the input data normalized or not.
 
 # Visualize
 
