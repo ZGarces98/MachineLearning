@@ -47,6 +47,9 @@ if(global.pause) {
 					case HIDDENA.swish:
 						value = "Swish";
 						break;
+					case HIDDENA.tanh:
+						value = "Tanh";
+						break;
 				}
 				
 				draw_text_transformed(x,y,"H Activation: " + value ,xSize,ySize,0);

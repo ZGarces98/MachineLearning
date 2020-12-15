@@ -29,6 +29,9 @@ function ml_feedforward(){
 				case HIDDENA.swish:
 					hidden[0][h] = swish(hidden[0][h] + bias[0]);
 					break;
+				case HIDDENA.tanh:
+					hidden[0][h] = tanh(hidden[0][h] + bias[0]);
+					break;
 			}
 			
 		}
@@ -53,6 +56,9 @@ function ml_feedforward(){
 						break;
 					case HIDDENA.swish:
 						hidden[d][h] = swish(hidden[d][h] + bias[d]);
+						break;
+					case HIDDENA.tanh:
+						hidden[d][h] = tanh(hidden[d][h] + bias[d]);
 						break;
 				}
 				

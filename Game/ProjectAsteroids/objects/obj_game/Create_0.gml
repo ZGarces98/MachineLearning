@@ -15,6 +15,7 @@ Used to change the neural network of everything else.
 		sigmoid,
 		leakyrelu,
 		swish,
+		tanh,
 		size
 	}
 
