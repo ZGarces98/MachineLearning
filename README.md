@@ -103,7 +103,9 @@ Spawn Type - (shoot, shield, both) - Whether to only spawn shooters, shields, or
 
 H Activation - (LeakyReLU, Sigmoid) - The hidden layer activation function to use. 
 
-O Activation - (Sigmoid, Softplus) - The output layer activation function to use.
+O Activation - (Sigmoid, Softplus, SoftMax, Unstable SoftMax) - The output layer activation function to use.
+
+Data Scale - (Normalized, Raw) - Make the input data normalized or not.
 
 # Visualize
 
